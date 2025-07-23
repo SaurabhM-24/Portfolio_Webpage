@@ -17,10 +17,11 @@
 }
 
 .certificatesScrollContainer {
+  justify-content: center;
   display: flex;
   overflow-x: auto;
   gap: 1.5rem;
-  padding: 0.5rem; /* Add padding to all sides */
+  padding: 0.5rem;
   margin-bottom: 2rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -42,7 +43,7 @@
 
 .certificateCard {
   flex: 0 0 auto;
-  width: 250px; /* Fixed width for each card */
+  width: 250px;
   scroll-snap-align: start;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -56,7 +57,7 @@
 
 .certificateImage {
   width: 100%;
-  height: 180px; /* Adjust height as needed */
+  height: 180px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -127,4 +128,23 @@
 .statCard p {
   font-size: 1.2rem;
   color: #8892B0;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+
+  .certificatesScrollContainer {
+    justify-content: left;
+  }
+
+  .codingStats {
+    flex-direction: column; /* Stack the cards vertically */
+    align-items: center; /* Center the cards */
+    gap: 1.5rem;
+  }
+
+  .statCard {
+    width: 80%; /* Allow cards to take up more width */
+    min-width: unset; /* Remove the minimum width */
+  }
 }

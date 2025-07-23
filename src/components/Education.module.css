@@ -35,7 +35,7 @@
 }
 
 .timelineItem:nth-child(odd) {
-  left: 0%;
+  left: 0;
 }
 
 .timelineItem:nth-child(even) {
@@ -48,7 +48,6 @@
   border-radius: 10px;
   position: relative;
 }
-
 
 .timelineContent h3 {
   font-size: 1.3rem;
@@ -64,4 +63,26 @@
 .timelineContent p {
   font-size: 1rem;
   color: #8892B0;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .timeline::after {
+    left: 0rem; /* Move the timeline to the left */
+  }
+
+  .timelineItem {
+    width: 100%;
+    padding-left: 0rem; /* Add padding to the left of the items */
+    padding-right: 2.5rem;
+    left: 0;
+  }
+
+  .timelineItem:nth-child(odd),
+  .timelineItem:nth-child(even) {
+    left: 0;
+    padding-left: 0rem; /* Add padding to the left of the items */
+    padding-right: 2.5rem;
+    text-align: left;
+  }
 }
