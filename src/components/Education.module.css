@@ -1,0 +1,68 @@
+
+.education {
+  padding: 4rem 2rem;
+  background-color: #0A192F;
+  color: #CCD6F6;
+}
+
+.education h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #64FFDA;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #112240;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-left: -2px;
+}
+
+.timelineItem {
+  padding: 1rem 0 1rem 2rem; /* Add left padding */
+  position: relative;
+  width: 100%;
+}
+
+.left {
+  /* remove left: 0; */
+}
+
+.right {
+  /* remove left: 50%; */
+}
+
+.timelineContent {
+  margin-left: 2rem; /* Add margin to align with the timeline */
+  padding: 1.5rem;
+  background-color: #112240;
+  border-radius: 10px;
+  position: relative;
+}
+
+.timelineContent h3 {
+  font-size: 1.3rem;
+  color: #64FFDA;
+}
+
+.timelineContent h4 {
+  font-size: 1.1rem;
+  color: #CCD6F6;
+  margin: 0.5rem 0;
+}
+
+.timelineContent p {
+  font-size: 1rem;
+  color: #8892B0;
+}

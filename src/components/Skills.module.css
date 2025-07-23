@@ -1,0 +1,50 @@
+
+.skills {
+  padding: 4rem 2rem;
+  background-color: #0A192F;
+  color: #CCD6F6;
+}
+
+.skills h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #64FFDA;
+}
+
+.skillsContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.skillPill {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #0A192F;
+  font-weight: bold;
+}
+
+.Languages {
+  background-color: #64FFDA; /* Teal */
+}
+
+.FrameworksLibraries {
+  background-color: #FFD700; /* Gold */
+}
+
+.Databases {
+  background-color: #FF6347; /* Tomato */
+}
+
+.ToolsPlatforms {
+  background-color: #ADFF2F; /* GreenYellow */
+}
+
+.Cybersecurity {
+  background-color: #BA55D3; /* MediumOrchid */
+}
