@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,9 +10,18 @@ import Contact from './components/Contact';
 import './App.css';
 
 function App() {
+  const [theme, setTheme] = useState('dark');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
   return (
     <div className="App">
-      <Header />
+      <Header toggleTheme={toggleTheme} theme={theme} />
       <main>
         <Hero />
         <About />

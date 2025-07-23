@@ -1,14 +1,23 @@
 .contact {
   padding: 4rem 2rem;
-  background-color: #0A192F;
-  color: #CCD6F6;
+  background-color: var(--secondary-dark);
+  color: var(--text-dark);
+}
+
+body.light .contact {
+  background-color: var(--secondary-light);
+  color: var(--text-light);
 }
 
 .contact h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #64FFDA;
+  color: var(--primary-dark);
+}
+
+body.light .contact h2 {
+  color: var(--primary-light);
 }
 
 .contactContainer {
@@ -30,15 +39,23 @@
 }
 
 .socialLinks a {
-  color: #64FFDA;
+  color: var(--primary-dark);
   text-decoration: none;
   margin: 0 1rem;
   font-size: 1.2rem;
   transition: color 0.3s ease;
 }
 
+body.light .socialLinks a {
+  color: var(--primary-light);
+}
+
 .socialLinks a:hover {
-  color: #CCD6F6;
+  color: var(--primary-dark);
+}
+
+body.light .socialLinks a:hover {
+  color: var(--primary-light);
 }
 
 .contactForm {
@@ -51,17 +68,24 @@
 
 .contactForm input,
 .contactForm textarea {
-  background-color: #112240;
-  border: 1px solid #8892B0;
+  background-color: var(--secondary-dark);
+  border: 1px solid var(--accent-dark);
   border-radius: 5px;
   padding: 0.8rem;
-  color: #CCD6F6;
+  color: var(--text-dark);
   font-size: 1rem;
 }
 
+body.light .contactForm input,
+body.light .contactForm textarea {
+  background-color: var(--secondary-light);
+  border: 1px solid var(--accent-light);
+  color: var(--text-light);
+}
+
 .contactForm button {
-  background-color: #64FFDA;
-  color: #0A192F;
+  background-color: var(--accent-dark);
+  color: var(--text-light);
   border: none;
   padding: 0.8rem;
   border-radius: 5px;
@@ -70,8 +94,17 @@
   transition: background-color 0.3s ease;
 }
 
+body.light .contactForm button {
+  background-color: var(--accent-light);
+  color: var(--text-dark);
+}
+
 .contactForm button:hover {
-  background-color: #52d8b6;
+  background-color: var(--accent-dark);
+}
+
+body.light .contactForm button:hover {
+  background-color: var(--accent-light);
 }
 
 .socialLinksBox {
@@ -80,21 +113,34 @@
   gap: 1rem;
   margin-top: 2rem;
   padding: 1.5rem;
-  /*background-color: #112240;*/
+  background-color: var(--secondary-dark);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.light .socialLinksBox {
+  background-color: var(--secondary-light);
 }
 
 .socialButton {
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  /*background-color: #64FFDA;*/
-  color: #0A192F; /* Change text color to dark blue */
+  /*background-color: var(--primary-dark);*/
+  color: var(--text-dark); /* Change text color to dark blue */
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
+body.light .socialButton {
+  background-color: var(--primary-light);
+  color: var(--text-light);
+}
+
 .socialButton:hover {
-  background-color: #52D1B6;
+  /*background-color: var(--accent-dark);*/
+}
+
+body.light .socialButton:hover {
+  background-color: var(--accent-light);
 }

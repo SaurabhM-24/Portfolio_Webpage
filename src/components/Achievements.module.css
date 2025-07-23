@@ -1,14 +1,23 @@
 .achievements {
   padding: 4rem 2rem;
-  background-color: #0A192F;
-  color: #CCD6F6;
+  background-color: var(--secondary-dark);
+  color: var(--text-dark);
+}
+
+body.light .achievements {
+  background-color: var(--secondary-light);
+  color: var(--text-light);
 }
 
 .achievements h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #64FFDA;
+  color: var(--primary-dark);
+}
+
+body.light .achievements h2 {
+  color: var(--primary-light);
 }
 
 .achievementsContainer {
@@ -32,13 +41,21 @@
 }
 
 .certificatesScrollContainer::-webkit-scrollbar-track {
-  background: #112240;
+  background: var(--secondary-dark);
   border-radius: 10px;
 }
 
+body.light .certificatesScrollContainer::-webkit-scrollbar-track {
+  background: var(--secondary-light);
+}
+
 .certificatesScrollContainer::-webkit-scrollbar-thumb {
-  background: #64FFDA;
+  background: var(--primary-dark);
   border-radius: 10px;
+}
+
+body.light .certificatesScrollContainer::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
 }
 
 .certificateCard {
@@ -77,15 +94,20 @@
 }
 
 .modalContent {
-  background-color: #0A192F;
+  background-color: var(--secondary-dark);
   padding: 2rem;
   border-radius: 10px;
   max-width: 90vw;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  color: #CCD6F6;
+  color: var(--text-dark);
   text-align: center;
+}
+
+body.light .modalContent {
+  background-color: var(--secondary-light);
+  color: var(--text-light);
 }
 
 .closeButton {
@@ -94,7 +116,11 @@
   right: 1rem;
   font-size: 2rem;
   cursor: pointer;
-  color: #64FFDA;
+  color: var(--primary-dark);
+}
+
+body.light .closeButton {
+  color: var(--primary-light);
 }
 
 .modalImage {
@@ -107,7 +133,11 @@
 
 .modalText {
   font-size: 1.1rem;
-  color: #8892B0;
+  color: var(--text-dark);
+}
+
+body.light .modalText {
+  color: var(--text-light);
 }
 
 .codingStats {
@@ -118,20 +148,32 @@
 }
 
 .statCard {
-  background-color: #112240;
+  background-color: var(--secondary-dark);
   padding: 1.5rem;
   border-radius: 10px;
   text-align: center;
   min-width: 200px;
 }
 
+body.light .statCard {
+  background-color: var(--secondary-light);
+}
+
 .statCard p {
   font-size: 1.2rem;
-  color: #8892B0;
+  color: var(--text-dark);
+}
+
+body.light .statCard p {
+  color: var(--text-light);
 }
 
 /* Media Query for smaller screens */
 @media (max-width: 768px) {
+
+  .achievements h2 {
+    font-size: 2rem;
+  }
 
   .certificatesScrollContainer {
     justify-content: left;
