@@ -80,7 +80,7 @@
   gap: 1rem;
   margin-top: 2rem;
   padding: 1.5rem;
-  background-color: #112240;
+  /*background-color: #112240;*/
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -88,8 +88,8 @@
 .socialButton {
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  background-color: #64FFDA;
-  color: #0A192F;
+  /*background-color: #64FFDA;*/
+  color: #0A192F; /* Change text color to dark blue */
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;

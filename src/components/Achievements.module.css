@@ -18,10 +18,9 @@
 
 .certificatesScrollContainer {
   display: flex;
-  justify-content: center;
   overflow-x: auto;
   gap: 1.5rem;
-  padding-bottom: 1rem; /* Add some padding for the scrollbar */
+  padding: 0.5rem; /* Add padding to all sides */
   margin-bottom: 2rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -114,6 +113,7 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
+  padding: 0 1rem;
 }
 
 .statCard {
