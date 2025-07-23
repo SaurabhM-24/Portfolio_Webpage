@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import styles from './Projects.module.css';
 
@@ -56,7 +55,13 @@ const Projects = () => {
           <div key={project.title} className={styles.projectCard} onClick={() => openModal(project)}>
             <img src={project.image} alt={project.title} className={styles.projectImage} />
             <h3>{project.title}</h3>
-            <p>{project.description}</p>
+            <div className={styles.technologies}>
+              {project.technologies.map((tech) => (
+                <span key={tech} className={styles.techPill}>
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </div>

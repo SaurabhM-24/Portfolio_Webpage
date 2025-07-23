@@ -1,4 +1,3 @@
-
 .education {
   padding: 4rem 2rem;
   background-color: #0A192F;
@@ -25,31 +24,31 @@
   background-color: #112240;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: 50%;
   margin-left: -2px;
 }
 
 .timelineItem {
-  padding: 1rem 0 1rem 2rem; /* Add left padding */
+  padding: 1rem 0;
   position: relative;
-  width: 100%;
+  width: 50%;
 }
 
-.left {
-  /* remove left: 0; */
+.timelineItem:nth-child(odd) {
+  left: 0%;
 }
 
-.right {
-  /* remove left: 50%; */
+.timelineItem:nth-child(even) {
+  left: 50%;
 }
 
 .timelineContent {
-  margin-left: 2rem; /* Add margin to align with the timeline */
   padding: 1.5rem;
   background-color: #112240;
   border-radius: 10px;
   position: relative;
 }
+
 
 .timelineContent h3 {
   font-size: 1.3rem;

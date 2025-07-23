@@ -1,4 +1,3 @@
-
 .about {
   padding: 4rem 2rem;
   background-color: #0A192F;
@@ -14,10 +13,17 @@
 
 .aboutContent {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 2rem;
   max-width: 900px;
   margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .aboutContent {
+    flex-direction: row;
+  }
 }
 
 .profilePic {

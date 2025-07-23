@@ -1,4 +1,3 @@
-
 .skills {
   padding: 4rem 2rem;
   background-color: #0A192F;
@@ -15,6 +14,19 @@
 .skillsContainer {
   max-width: 900px;
   margin: 0 auto;
+}
+
+.skillCategory {
+  margin-bottom: 1.5rem;
+}
+
+.skillCategory h3 {
+  color: #64FFDA;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.skillPills {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

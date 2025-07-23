@@ -1,4 +1,3 @@
-
 .projects {
   padding: 4rem 2rem;
   background-color: #0A192F;
@@ -61,6 +60,26 @@
   margin-bottom: 1rem;
 }
 
+.projectCard h3 {
+    color: #64FFDA;
+}
+
+.projectCard .technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.projectCard .techPill {
+  background-color: #0A192F;
+  color: #8892B0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+
 /* Modal Styles */
 .modalOverlay {
   position: fixed;
@@ -118,6 +137,9 @@
 
 .modalContent .technologies {
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .modalContent .techPill {
