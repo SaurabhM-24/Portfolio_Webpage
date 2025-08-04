@@ -1,14 +1,243 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurabh Mishra - Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Particle background -->
+    <div id="particles-js"></div>
+
+    <!-- Theme toggle -->
+    <div class="theme-toggle">
+        <i data-feather="moon"></i>
+    </div>
+
+    <!-- Main container for the physics-based navigation -->
+    <div class="container">
+        <!-- Nodes will be dynamically generated here by Matter.js -->
+    </div>
+
+    <!-- Content sections -->
+    <div class="content">
+        <!-- About Me -->
+        <div class="content__section" id="about">
+            <div class="content__wrapper">
+                <img src="Assets/me.jpg" alt="Saurabh Mishra" class="about-me__image">
+                <h1 class="content__title">About Me</h1>
+                <p class="content__text">I'm a dedicated Computer Science student pursuing a double major in CSE with a minor in Cybersecurity, and Data Science & Artificial Intelligence. I specialize in building robust, scalable web applications and developing intelligent solutions with a strong focus on security. My academic work is complemented by hands-on experience with real-world projects in Python, C++, and full-stack web development. I'm currently working on a Vulnerability Management Dashboard as my flagship cybersecurity project.</p>
+            </div>
+        </div>
+        <!-- Skills -->
+        <div class="content__section" id="skills">
+            <div class="content__wrapper">
+                <h1 class="content__title">Skills</h1>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="skill-category__title">Languages</h3>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>C++</li>
+                            <li>C</li>
+                            <li>Java</li>
+                            <li>SQL</li>
+                            <li>HTML, CSS, JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category__title">Frameworks & Libraries</h3>
+                        <ul class="skill-list">
+                            <li>React.js</li>
+                            <li>TailwindCSS</li>
+                            <li>Flask (for APIs)</li>
+                            <li>Pandas, NumPy</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category__title">Databases</h3>
+                        <ul class="skill-list">
+                            <li>MySQL</li>
+                            <li>MongoDB (beginner familiarity)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category__title">Tools & Platforms</h3>
+                        <ul class="skill-list">
+                            <li>Git & GitHub</li>
+                            <li>VS Code</li>
+                            <li>Figma (UI/UX Design)</li>
+                            <li>Postman</li>
+                            <li>Linux</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category__title">Cybersecurity</h3>
+                        <ul class="skill-list">
+                            <li>OWASP Top 10 (working knowledge)</li>
+                            <li>Network Security</li>
+                            <li>Vulnerability Scanning (ongoing experience)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Projects -->
+        <div class="content__section" id="projects">
+            <div class="content__wrapper">
+                <h1 class="content__title">Projects</h1>
+                <div class="project-grid">
+                    <!-- Project 1: Vulnerability Management Dashboard -->
+                    <div class="project-card">
+                        <img src="Assets/vulnerability_sc.png" alt="Vulnerability Management Dashboard" class="project-card__image">
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Vulnerability Management Dashboard</h3>
+                            <p class="project-card__description">A full-stack web application designed for cybersecurity professionals to detect, track, and manage system vulnerabilities. Offers dashboards for risk scoring, CVE tracking, and role-based access.</p>
+                            <p class="project-card__technologies"><strong>Technologies:</strong> React.js, TailwindCSS, Flask, REST APIs, MongoDB</p>
+                            <div class="project-card__links">
+                                <a href="http://vuln.live.com" target="_blank" class="project-card__link">Live Demo</a>
+                                <a href="http://git.vul.com" target="_blank" class="project-card__link">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2: Library Management System -->
+                    <div class="project-card">
+                        <img src="Assets/lib_sc.png" alt="Library Management System" class="project-card__image">
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Library Management System</h3>
+                            <p class="project-card__description">A comprehensive CRUD-based system that allows users to manage library data, including books, members, and transactions. Designed with a focus on modularity and clean code structure.</p>
+                            <p class="project-card__technologies"><strong>Technologies:</strong> Python, MySQL</p>
+                            <div class="project-card__links">
+                                <a href="#" class="project-card__link disabled">Live Demo (N/A)</a>
+                                <a href="http://git.lib.com" target="_blank" class="project-card__link">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3: Snake Game | Spaceship Game -->
+                    <div class="project-card">
+                        <img src="Assets/snake.sc.png" alt="Snake Game" class="project-card__image">
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Snake Game | Spaceship Game</h3>
+                            <p class="project-card__description">Classic arcade-style games built using Pygame as part of exploring game loops, event handling, and collision logic.</p>
+                            <p class="project-card__technologies"><strong>Technologies:</strong> Python, Pygame</p>
+                            <div class="project-card__links">
+                                <a href="https://github.com/SaurabhM-24/Snake-Game" target="_blank" class="project-card__link">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 4: Personal Portfolio Website -->
+                    <div class="project-card">
+                        <img src="Assets/portfolio_sc.png" alt="Personal Portfolio Website" class="project-card__image">
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Personal Portfolio Website</h3>
+                            <p class="project-card__description">A modern and responsive portfolio website to showcase your technical work, certifications, and academic background.</p>
+                            <p class="project-card__technologies"><strong>Technologies:</strong> React.js, TailwindCSS</p>
+                            <div class="project-card__links">
+                                <a href="http://porti.com" target="_blank" class="project-card__link">Live Demo</a>
+                                <a href="http://git.port.com" target="_blank" class="project-card__link">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Resume -->
+        <div class="content__section" id="resume">
+            <div class="content__wrapper">
+                <h1 class="content__title">Resume</h1>
+                <p class="content__text">You can download my resume by clicking the button below.</p>
+                <a href="Assets/resume.pdf" target="_blank" class="btn">Download Resume</a>
+            </div>
+        </div>
+        <!-- Contact -->
+        <div class="content__section" id="contact">
+            <div class="content__wrapper">
+                <h1 class="content__title">Contact Me</h1>
+                <p class="content__text">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out to me through any of the following channels:</p>
+                <div class="contact-links">
+                    <a href="mailto:saurabhmishra.24x@gmail.com" class="contact-link">
+                        <i data-feather="mail"></i>
+                        <span>saurabhmishra.24x@gmail.com</span>
+                    </a>
+                    <a href="https://github.com/SaurabhM-24" target="_blank" class="contact-link">
+                        <i data-feather="github"></i>
+                        <span>github.com/SaurabhM-24</span>
+                    </a>
+                    <a href="https://linkedin.sammy.wron.com" target="_blank" class="contact-link">
+                        <i data-feather="linkedin"></i>
+                        <span>linkedin.sammy.wron.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Education -->
+        <div class="content__section" id="education">
+            <div class="content__wrapper">
+                <h1 class="content__title">Education</h1>
+                <div class="education-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">B.Tech in Computer Science and Engineering</h3>
+                            <p class="timeline-item__institution">Lovely Professional University</p>
+                            <p class="timeline-item__dates">Aug 2023 – May 2027</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">B.Sc in Data Science and Artificial Intelligence</h3>
+                            <p class="timeline-item__institution">Indian Institute of Technology Guwahati</p>
+                            <p class="timeline-item__dates">Aug 2024 – May 2028</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Achievements -->
+        <div class="content__section" id="achievements">
+            <div class="content__wrapper">
+                <h1 class="content__title">Achievements & Certificates</h1>
+                <div class="achievements-grid">
+                    <div class="achievement-card">
+                        <h3 class="achievement-card__title">Coding Achievements</h3>
+                        <ul class="achievement-list">
+                            <li>Top 100% in LeetCode</li>
+                            <li>0.1 stars in codechef</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-card">
+                        <h3 class="achievement-card__title">Certificates</h3>
+                        <div class="certificate-images">
+                            <img src="Assets/cert1.png" alt="Certificate 1" class="certificate-image">
+                            <img src="Assets/cert2.png" alt="Certificate 2" class="certificate-image">
+                            <img src="Assets/cert3.png" alt="Certificate 3" class="certificate-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLI -->
+    <div class="cli">
+        <div class="cli__trigger">&gt;</div>
+        <div class="cli__window">
+            <div class="cli__output"></div>
+            <div class="cli__input-container">
+                <span class="cli__prompt">&gt;</span>
+                <input type="text" class="cli__input" autofocus />
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <!-- Main script -->
+    <script src="js/main.js"></script>
+</body>
 </html>
