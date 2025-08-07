@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saurabh Mishra - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Particle background -->
@@ -17,7 +17,10 @@
 
     <!-- Main container for the physics-based navigation -->
     <div class="container">
-        <!-- Nodes will be dynamically generated here by Matter.js -->
+        <!-- SVG container for the connecting lines -->
+        <svg id="line-svg" width="100%" height="100%"></svg>
+        
+        <!-- Nodes will be dynamically generated here by the script -->
     </div>
 
     <!-- Content sections -->
@@ -234,10 +237,11 @@
     <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
+    <!-- THE FIX: Swapped tsParticles with the original particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <!-- Main script -->
-    <script src="js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -23,6 +23,16 @@ body {
     transition: background-color 0.3s;
 }
 
+/* SVG container for lines */
+#line-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Sit behind the nodes but above the particles */
+    pointer-events: none; /* Make sure it doesn't block mouse interactions */
+}
+
+
 /* Theme Toggle */
 .theme-toggle {
     position: fixed;
@@ -74,6 +84,7 @@ body.dark-mode .theme-toggle:hover {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s;
+    z-index: 10; /* THE FIX: Ensure nodes are stacked above the SVG lines */
 }
 
 .node:hover {
