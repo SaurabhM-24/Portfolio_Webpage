@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Get DOM Elements ---
     const container = document.querySelector('.container');
     const svgContainer = document.getElementById('line-svg');
+    const nodeLabelDisplay = document.getElementById('node-label-display');
 
     // --- Matter.js setup (Physics Engine ONLY) ---
     const { Engine, World, Bodies, Body, Constraint, Mouse, MouseConstraint } = Matter;
@@ -103,6 +104,16 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'education', icon: 'book-open' },
         { id: 'achievements', icon: 'award' }
     ];
+
+    const nodeDisplayNames = {
+        about: 'About Me',
+        skills: 'Skills',
+        projects: 'Projects',
+        resume: 'Resume',
+        contact: 'Contact',
+        education: 'Education',
+        achievements: 'Achievements'
+    };
 
     const center = { x: container.clientWidth / 2, y: container.clientHeight / 2 };
     const radius = 60;
@@ -203,8 +214,21 @@ document.addEventListener('DOMContentLoaded', () => {
         nodeElement.style.height = `${radius * 2}px`;
         const iconName = nodeData.find(d => d.id === node.label).icon;
         nodeElement.innerHTML = `<i data-feather="${iconName}"></i>`;
+        
+        // New: Add event listeners for hover effect
+        nodeElement.addEventListener('mouseenter', () => {
+            const displayName = nodeDisplayNames[node.label] || '';
+            nodeLabelDisplay.textContent = displayName;
+            gsap.to(nodeLabelDisplay, { opacity: 1, duration: 0.3 });
+        });
+
+        nodeElement.addEventListener('mouseleave', () => {
+            gsap.to(nodeLabelDisplay, { opacity: 0, duration: 0.3 });
+        });
+
         container.appendChild(nodeElement);
     });
+    
     feather.replace();
 
     // --- Theme and Line Style Management ---
