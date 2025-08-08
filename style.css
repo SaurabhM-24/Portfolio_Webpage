@@ -85,12 +85,20 @@ body.dark-mode .theme-toggle:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, backdrop-filter 0.3s, border 0.3s;
     z-index: 10; /* THE FIX: Ensure nodes are stacked above the SVG lines */
 }
 
 .node:hover {
     background-color: #3949AB;
+}
+
+/* VISUAL CHANGE: Glassmorphism effect for the expanded node */
+.node.node-expanded {
+    background-color: rgba(92, 107, 192, 0.25); /* Tinted for light mode */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .node i {
@@ -514,6 +522,12 @@ body.dark-mode .node {
 
 body.dark-mode .node:hover {
     background-color: #5E35B1;
+}
+
+/* VISUAL CHANGE: Dark mode glassmorphism */
+body.dark-mode .node.node-expanded {
+    background-color: rgba(126, 87, 194, 0.25); /* Tinted for dark mode */
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .content__section {
