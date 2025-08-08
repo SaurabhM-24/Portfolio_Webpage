@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saurabh Mishra - Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Particle background -->
@@ -31,9 +34,21 @@
         <!-- About Me -->
         <div class="content__section" id="about">
             <div class="content__wrapper">
-                <img src="Assets/me.jpg" alt="Saurabh Mishra" class="about-me__image">
-                <h1 class="content__title">About Me</h1>
-                <p class="content__text">I'm a dedicated Computer Science student pursuing a double major in CSE with a minor in Cybersecurity, and Data Science & Artificial Intelligence. I specialize in building robust, scalable web applications and developing intelligent solutions with a strong focus on security. My academic work is complemented by hands-on experience with real-world projects in Python, C++, and full-stack web development. I'm currently working on a Vulnerability Management Dashboard as my flagship cybersecurity project.</p>
+                <div class="about-me-layout">
+                    <div class="about-me-layout__left">
+                        <img src="Assets/me.jpg" alt="Saurabh Mishra" class="about-me__image">
+                        <div class="about-me__name-title">
+                            <h2>Saurabh Mishra</h2>
+                            <p>Aspiring Software Engineer</p>
+                        </div>
+                    </div>
+                    <div class="about-me-layout__right">
+                        <h1 class="content__title">About Me</h1>
+                        <p class="content__text">
+                            I'm a dedicated Computer Science student pursuing a double major in CSE with a minor in Cybersecurity, and Data Science & Artificial Intelligence. I specialize in building robust, scalable web applications and developing intelligent solutions with a strong focus on security. My academic work is complemented by hands-on experience with real-world projects in Python, C++, and full-stack web development. I'm currently working on a Vulnerability Management Dashboard as my flagship cybersecurity project.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Skills -->
@@ -153,7 +168,7 @@
             <div class="content__wrapper">
                 <h1 class="content__title">Resume</h1>
                 <p class="content__text">You can download my resume by clicking the button below.</p>
-                <a href="Assets/resume.pdf" target="_blank" class="btn">Download Resume</a>
+                <a href="Assets/Resume.pdf" target="_blank" class="btn">Download Resume</a>
             </div>
         </div>
         <!-- Contact -->
