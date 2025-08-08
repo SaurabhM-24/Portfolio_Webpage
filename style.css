@@ -72,6 +72,8 @@ body.dark-mode .theme-toggle:hover {
     width: 100%;
     height: 100vh;
     position: relative;
+    /* Move the container up slightly */
+    transform: translateY(-5vh);
 }
 
 /* Node Styling */
@@ -94,6 +96,27 @@ body.dark-mode .theme-toggle:hover {
 .node i {
     color: white;
 }
+
+/* Node Label Display */
+#node-label-display {
+    position: fixed;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #212121;
+    font-size: 2.5rem;
+    font-weight: 500;
+    z-index: 5;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    text-transform: capitalize;
+    opacity: 0; /* Start with the label hidden */
+}
+
+body.dark-mode #node-label-display {
+    color: #E0E0E0;
+}
+
 
 /* Content Sections */
 .content__section {
