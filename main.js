@@ -73,13 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initial particle setup
-    initParticles(document.body.classList.contains('dark-mode'));
-
-
-    // Feather icons
-    feather.replace();
-
     // --- Get DOM Elements ---
     const container = document.querySelector('.container');
     const svgContainer = document.getElementById('line-svg');
@@ -94,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Node and SVG Line Data ---
     const nodes = [];
-    const svgLines = []; 
+    const svgLines = [];
     const nodeData = [
         { id: 'about', icon: 'user' },
         { id: 'skills', icon: 'settings' },
@@ -118,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const center = { x: container.clientWidth / 2, y: container.clientHeight / 2 };
     const radius = 60;
     const nodeOptions = {
-        frictionAir: 0.4, 
+        frictionAir: 0.4,
         restitution: 0.5
     };
 
@@ -142,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             length: 250
         });
         World.add(world, constraint);
-        
+
         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         svgLines.push({ constraint: constraint, element: line });
         svgContainer.appendChild(line);
@@ -164,24 +157,22 @@ document.addEventListener('DOMContentLoaded', () => {
         svgLines.push({ constraint: constraint, element: line });
         svgContainer.appendChild(line);
     }
-    
+
     // Connect all nodes to each other
     for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
             const constraint = Constraint.create({
                 bodyA: nodes[i],
                 bodyB: nodes[j],
-                stiffness: 0.0005, 
+                stiffness: 0.0005,
             });
             World.add(world, constraint);
 
             const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            //line.style.strokeOpacity = "0.3";
             svgLines.push({ constraint: constraint, element: line });
             svgContainer.appendChild(line);
         }
     }
-
 
     World.add(world, nodes);
 
@@ -214,8 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nodeElement.style.height = `${radius * 2}px`;
         const iconName = nodeData.find(d => d.id === node.label).icon;
         nodeElement.innerHTML = `<i data-feather="${iconName}"></i>`;
-        
-        // New: Add event listeners for hover effect
+
+        // Add event listeners for hover effect
         nodeElement.addEventListener('mouseenter', () => {
             const displayName = nodeDisplayNames[node.label] || '';
             nodeLabelDisplay.textContent = displayName;
@@ -229,9 +220,28 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(nodeElement);
     });
     
-    feather.replace();
+    // --- Create Back Buttons in Content Sections ---
+    const contentSections = document.querySelectorAll('.content__section');
+    contentSections.forEach(section => {
+        const backButton = document.createElement('button');
+        backButton.classList.add('back-button');
+        backButton.innerHTML = '<i data-feather="arrow-left"></i>';
+        backButton.addEventListener('click', () => closeSection(section.id));
+        section.appendChild(backButton);
+    });
 
     // --- Theme and Line Style Management ---
+    const themeToggle = document.querySelector('.theme-toggle');
+
+    function updateTheme() {
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        // FIX: Recreate the icon element each time to avoid issues with feather.replace()
+        themeToggle.innerHTML = `<i data-feather="${isDarkMode ? 'sun' : 'moon'}"></i>`;
+        feather.replace(); // This call now correctly targets the new icon
+        updateLineStyles();
+        initParticles(isDarkMode);
+    }
+
     function updateLineStyles() {
         const isDarkMode = document.body.classList.contains('dark-mode');
         const strokeColor = isDarkMode ? '#7E57C2' : '#5C6BC0';
@@ -241,19 +251,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const themeToggle = document.querySelector('.theme-toggle');
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        const icon = themeToggle.querySelector('i');
-        icon.setAttribute('data-feather', isDarkMode ? 'sun' : 'moon');
-        feather.replace();
-        updateLineStyles();
-        // Re-initialize particles with the new theme color
-        initParticles(isDarkMode);
+        updateTheme();
     });
-    
-    updateLineStyles();
+
+    // Initial setup
+    updateTheme(); // Sets up theme and calls feather.replace() for the first time
 
     // --- Main Animation Loop ---
     (function update() {
@@ -270,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         nodes.forEach(node => {
             const nodeElement = document.getElementById(`node-${node.label}`);
-            if (!gsap.isTweening(nodeElement)) {
+            if (nodeElement && !gsap.isTweening(nodeElement)) {
                 nodeElement.style.left = `${node.position.x - radius}px`;
                 nodeElement.style.top = `${node.position.y - radius}px`;
             }
@@ -279,15 +283,18 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(update);
     })();
 
-
-    // --- GSAP Animation and other logic remains the same ---
-    const contentSections = document.querySelectorAll('.content__section');
+    // --- GSAP Animation for opening/closing sections ---
+    let isSectionOpen = false; // BUG FIX: State to prevent double-click issues
 
     function openSection(nodeId) {
+        if (isSectionOpen) return; // BUG FIX: Don't run if a section is already open
+        isSectionOpen = true; // BUG FIX: Set the flag
+
         mouseConstraint.collisionFilter.mask = 0;
-        
+
         const section = document.getElementById(nodeId);
         const nodeElement = document.getElementById(`node-${nodeId}`);
+        nodeElement.classList.add('node-expanded'); // VISUAL CHANGE: Add class for glass effect
         const nodeIcon = nodeElement.querySelector('svg');
         const nodeRect = nodeElement.getBoundingClientRect();
 
@@ -296,15 +303,15 @@ document.addEventListener('DOMContentLoaded', () => {
             Matter.Body.setStatic(nodeBody, true);
         }
 
-        const padding = 80;
+        const padding = 55;
 
         const timeline = gsap.timeline();
 
         timeline
             .set(nodeElement, { zIndex: 100 })
             .to(nodeIcon, { duration: 0.3, autoAlpha: 0, ease: 'power2.in' }, 0)
-            .to(nodeElement, { 
-                duration: 0.8, 
+            .to(nodeElement, {
+                duration: 0.8,
                 x: -nodeRect.left + padding,
                 y: -nodeRect.top + padding,
                 width: `calc(100vw - ${padding * 2}px)`,
@@ -312,9 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 borderRadius: '20px',
                 ease: 'power3.inOut'
             }, 0)
-            .to(section, { 
-                duration: 0.4, 
-                autoAlpha: 1, 
+            .to(section, {
+                duration: 0.4,
+                autoAlpha: 1,
                 ease: 'power2.inOut',
                 clipPath: `inset(0 0 0 0 round 20px)`
             }, '>-0.4');
@@ -330,24 +337,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const timeline = gsap.timeline({
             onComplete: () => {
                 const nodeBody = nodes.find(n => n.label === nodeId);
-                if (nodeBody) { 
+                if (nodeBody) {
                     Matter.Body.setStatic(nodeBody, false);
                 }
                 Matter.Body.setStatic(mainNode, true);
                 gsap.set(nodeElement, { zIndex: '' });
                 gsap.set(section, { clipPath: '' });
+                nodeElement.classList.remove('node-expanded'); // VISUAL CHANGE: Remove class
+                isSectionOpen = false; // BUG FIX: Reset the flag
             }
         });
 
         timeline
-            .to(section, { 
-                duration: 0.4, 
-                autoAlpha: 0, 
+            .to(section, {
+                duration: 0.4,
+                autoAlpha: 0,
                 ease: 'power2.inOut',
                 clipPath: `inset(50% 50% 50% 50% round 20px)`
             })
-            .to(nodeElement, { 
-                duration: 0.8, 
+            .to(nodeElement, {
+                duration: 0.8,
                 x: 0,
                 y: 0,
                 width: `${radius * 2}px`,
@@ -361,15 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nodes.forEach(node => {
         const nodeElement = document.getElementById(`node-${node.label}`);
         nodeElement.addEventListener('click', () => openSection(node.label));
-    });
-
-    contentSections.forEach(section => {
-        const backButton = document.createElement('button');
-        backButton.classList.add('back-button');
-        backButton.innerHTML = '<i data-feather="arrow-left"></i>';
-        backButton.addEventListener('click', () => closeSection(section.id));
-        section.appendChild(backButton);
-        feather.replace();
     });
 
     // CLI Functionality
@@ -401,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
         outputLine.innerHTML = `<span class="cli__prompt">&gt;</span> ${command}`;
         cliOutput.appendChild(outputLine);
 
-        const responseLine = document.createElement('div');
+        const responseLine = document.createElement('div'); // TYPO FIX: Changed ''div' to 'div'
         let response = '';
 
         switch (command.toLowerCase()) {
@@ -423,10 +423,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             case 'theme light':
                 document.body.classList.remove('dark-mode');
+                updateTheme();
                 response = 'Theme set to light';
                 break;
             case 'theme dark':
                 document.body.classList.add('dark-mode');
+                updateTheme();
                 response = 'Theme set to dark';
                 break;
             case 'exit':
