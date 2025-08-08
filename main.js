@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Matter.Body.setStatic(nodeBody, true);
         }
 
-        const padding = 55;
+        const padding = 80;
 
         const timeline = gsap.timeline();
 
