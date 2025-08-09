@@ -99,6 +99,8 @@ body.dark-mode .theme-toggle:hover {
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(20px); /* For Safari */
     border: 1px solid rgba(255, 255, 255, 0.18);
+    /* This is crucial to contain the scrolling content */
+    overflow: hidden;
 }
 
 .node i {
@@ -126,37 +128,46 @@ body.dark-mode #node-label-display {
 }
 
 
-/* Content Sections */
+/* FIXED: Content Section and Wrapper structure for scrolling */
 .content__section {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center; /* Vertically center the content */
-    justify-content: center; /* Horizontally center the content */
-    background-color: transparent; /* Allow node color to show through */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    background-color: transparent;
     opacity: 0;
     visibility: hidden;
-    overflow-y: auto;
-    padding: 80px; 
-    z-index: 150; /* Ensure content is above the expanded node */
-    clip-path: inset(0 0 0 0 round 20px);
+    padding: 80px 0 80px 80px; /* Uniform padding */
+    z-index: 150;
+    overflow: hidden; /* Prevent this container from scrolling */
 }
 
 .content__wrapper {
-    max-width: 1100px; /* Increased max-width */
+    max-width: 1100px;
     width: 100%;
+    margin: 0 auto; /* Center the wrapper horizontally */
     text-align: center;
-    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: 100%; /* Take up available height */
+    padding-right: 40px;
+    padding-bottom: 40px;
+}
+
+.content__title {
+    font-size: 3rem;
+    margin-top: 60px; /* Add margin to push it down from the top */
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 /* REVISED: About Me Layout Styles */
 .about-me-layout {
     display: grid;
-    grid-template-columns: 300px 1fr; /* Adjusted column width */
-    gap: 50px; /* Increased gap */
+    grid-template-columns: 300px 1fr;
+    gap: 50px;
     align-items: center;
     width: 100%;
 }
@@ -169,15 +180,15 @@ body.dark-mode #node-label-display {
 }
 
 .about-me__image {
-    width: 250px; /* Increased size */
-    height: 250px; /* Increased size */
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid #5C6BC0;
 }
 
 .about-me__name-title {
-    background-color: transparent; /* Removed background */
+    background-color: transparent;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
@@ -186,36 +197,33 @@ body.dark-mode #node-label-display {
 
 .about-me__name-title h2 {
     margin: 0;
-    font-size: 1.8rem; /* Increased font size */
+    font-size: 1.8rem;
     color: #3949AB;
 }
 
 .about-me__name-title p {
     margin: 5px 0 0;
     color: #212121;
+    font-size: 1.2rem;
 }
 
 .about-me-layout__right {
     text-align: left;
 }
 
-.about-me-layout__right .content__title {
-    margin-bottom: 15px;
-    font-size: 3rem; /* Increased font size */
-}
-
 .about-me-layout__right .content__text {
-    font-size: 1.2rem; /* Increased font size */
+    font-size: 1.2rem;
     line-height: 1.7;
 }
 
 
 .back-button {
-    position: fixed;
+    /* FIXED: Position is fixed to stay on screen, symmetrical to theme toggle */
+    position: fixed; 
     top: 20px;
     left: 20px;
     cursor: pointer;
-    z-index: 200;
+    z-index: 250;
     background-color: #5C6BC0;
     border-radius: 50%;
     width: 40px;
@@ -428,34 +436,67 @@ body.dark-mode .back-button:hover {
     transform: scale(1.1);
 }
 
-/* Skills Grid */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    text-align: left;
+/* REVISED: Skills Layout Styles */
+.skills-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     width: 100%;
+    margin-top: 2rem;
 }
 
-.skill-category {
-    background-color: #F5F7FA;
-    padding: 20px;
-    border-radius: 10px;
+.skill-row {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-.skill-category__title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+.skill-row__title {
+    font-size: 1.8rem; /* Matched font size */
+    font-weight: 500;
+    text-align: right;
     color: #3949AB;
 }
 
-.skill-list {
-    list-style: none;
+.skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-.skill-list li {
-    margin-bottom: 10px;
+.skill-pill {
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1.2rem; /* Matched font size */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
+
+.skill-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Expertise Levels */
+.skill-pill.level-expert {
+    background-color: #5C6BC0;
+    color: #FFFFFF;
+}
+.skill-pill.level-proficient {
+    background-color: #9FA8DA;
+    color: #1A237E;
+}
+.skill-pill.level-familiar {
+    background-color: #E8EAF6;
+    color: #3F51B5;
+}
+
+.skill-pill.level-expert:hover { background-color: #3949AB; }
+.skill-pill.level-proficient:hover { background-color: #7986CB; }
+.skill-pill.level-familiar:hover { background-color: #C5CAE9; }
+
 
 /* CLI */
 .cli {
@@ -586,15 +627,36 @@ body.dark-mode .about-me__name-title p {
 }
 
 
+/* REVISED: Dark Mode Skills */
+body.dark-mode .skill-row__title {
+    color: #9575CD;
+}
+
+body.dark-mode .skill-pill.level-expert {
+    background-color: #7E57C2;
+    color: #FFFFFF;
+}
+body.dark-mode .skill-pill.level-proficient {
+    background-color: #5E35B1;
+    color: #E0E0E0;
+}
+body.dark-mode .skill-pill.level-familiar {
+    background-color: #372A4F;
+    color: #D1C4E9;
+}
+
+body.dark-mode .skill-pill.level-expert:hover { background-color: #512DA8; }
+body.dark-mode .skill-pill.level-proficient:hover { background-color: #4527A0; }
+body.dark-mode .skill-pill.level-familiar:hover { background-color: #512DA8; opacity: 0.8; }
+
+
 body.dark-mode .project-card, 
-body.dark-mode .skill-category, 
 body.dark-mode .achievement-card, 
 body.dark-mode .timeline-item__content {
     background-color: #2C2C2C;
 }
 
 body.dark-mode .project-card__link, 
-body.dark-mode .skill-category__title, 
 body.dark-mode .achievement-card__title, 
 body.dark-mode .timeline-item__title {
     color: #9575CD;
@@ -640,6 +702,19 @@ body.dark-mode .cli__input-container {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .content__wrapper {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .content__section {
+        padding: 60px 20px;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+
     .about-me-layout {
         grid-template-columns: 1fr; /* Stack columns on smaller screens */
         gap: 20px;
@@ -659,16 +734,21 @@ body.dark-mode .cli__input-container {
         text-align: center;
     }
     
-    .content__wrapper {
-        max-width: 100%;
-        padding: 10px;
-    }
-
-    .content__section {
-        padding: 60px 20px;
-    }
-
     .project-grid {
         grid-template-columns: 1fr;
+    }
+
+    .skill-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .skill-row__title {
+        text-align: left;
+        font-size: 1.5rem;
+    }
+
+    .skill-pill {
+        font-size: 1rem;
     }
 }

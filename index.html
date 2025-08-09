@@ -34,6 +34,8 @@
         <!-- About Me -->
         <div class="content__section" id="about">
             <div class="content__wrapper">
+                <!-- FIXED: Title is now outside the layout, consistent with other sections -->
+                <h1 class="content__title">About Me</h1>
                 <div class="about-me-layout">
                     <div class="about-me-layout__left">
                         <img src="Assets/me.jpg" alt="Saurabh Mishra" class="about-me__image">
@@ -43,7 +45,6 @@
                         </div>
                     </div>
                     <div class="about-me-layout__right">
-                        <h1 class="content__title">About Me</h1>
                         <p class="content__text">
                             I'm a dedicated Computer Science student pursuing a double major in CSE with a minor in Cybersecurity, and Data Science & Artificial Intelligence. I specialize in building robust, scalable web applications and developing intelligent solutions with a strong focus on security. My academic work is complemented by hands-on experience with real-world projects in Python, C++, and full-stack web development. I'm currently working on a Vulnerability Management Dashboard as my flagship cybersecurity project.
                         </p>
@@ -55,51 +56,57 @@
         <div class="content__section" id="skills">
             <div class="content__wrapper">
                 <h1 class="content__title">Skills</h1>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3 class="skill-category__title">Languages</h3>
-                        <ul class="skill-list">
-                            <li>Python</li>
-                            <li>C++</li>
-                            <li>C</li>
-                            <li>Java</li>
-                            <li>SQL</li>
-                            <li>HTML, CSS, JavaScript</li>
-                        </ul>
+                <div class="skills-layout">
+                    <!-- Languages -->
+                    <div class="skill-row">
+                        <span class="skill-row__title">Languages</span>
+                        <div class="skill-pills">
+                            <span class="skill-pill level-expert">Python</span>
+                            <span class="skill-pill level-expert">C++</span>
+                            <span class="skill-pill level-proficient">C</span>
+                            <span class="skill-pill level-proficient">Java</span>
+                            <span class="skill-pill level-proficient">SQL</span>
+                            <span class="skill-pill level-expert">HTML, CSS, JavaScript</span>
+                        </div>
                     </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category__title">Frameworks & Libraries</h3>
-                        <ul class="skill-list">
-                            <li>React.js</li>
-                            <li>TailwindCSS</li>
-                            <li>Flask (for APIs)</li>
-                            <li>Pandas, NumPy</li>
-                        </ul>
+                    <!-- Frameworks & Libraries -->
+                    <div class="skill-row">
+                        <span class="skill-row__title">Frameworks & Libraries</span>
+                        <div class="skill-pills">
+                            <span class="skill-pill level-expert">React.js</span>
+                            <span class="skill-pill level-proficient">TailwindCSS</span>
+                            <span class="skill-pill level-proficient">Flask (for APIs)</span>
+                            <span class="skill-pill level-familiar">Pandas</span>
+                            <span class="skill-pill level-familiar">NumPy</span>
+                        </div>
                     </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category__title">Databases</h3>
-                        <ul class="skill-list">
-                            <li>MySQL</li>
-                            <li>MongoDB (beginner familiarity)</li>
-                        </ul>
+                    <!-- Databases -->
+                    <div class="skill-row">
+                        <span class="skill-row__title">Databases</span>
+                        <div class="skill-pills">
+                            <span class="skill-pill level-proficient">MySQL</span>
+                            <span class="skill-pill level-familiar">MongoDB</span>
+                        </div>
                     </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category__title">Tools & Platforms</h3>
-                        <ul class="skill-list">
-                            <li>Git & GitHub</li>
-                            <li>VS Code</li>
-                            <li>Figma (UI/UX Design)</li>
-                            <li>Postman</li>
-                            <li>Linux</li>
-                        </ul>
+                    <!-- Tools & Platforms -->
+                    <div class="skill-row">
+                        <span class="skill-row__title">Tools & Platforms</span>
+                        <div class="skill-pills">
+                            <span class="skill-pill level-expert">Git & GitHub</span>
+                            <span class="skill-pill level-proficient">VS Code</span>
+                            <span class="skill-pill level-familiar">Figma</span>
+                            <span class="skill-pill level-familiar">Postman</span>
+                            <span class="skill-pill level-proficient">Linux</span>
+                        </div>
                     </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category__title">Cybersecurity</h3>
-                        <ul class="skill-list">
-                            <li>OWASP Top 10 (working knowledge)</li>
-                            <li>Network Security</li>
-                            <li>Vulnerability Scanning (ongoing experience)</li>
-                        </ul>
+                    <!-- Cybersecurity -->
+                    <div class="skill-row">
+                        <span class="skill-row__title">Cybersecurity</span>
+                        <div class="skill-pills">
+                            <span class="skill-pill level-proficient">OWASP Top 10</span>
+                            <span class="skill-pill level-familiar">Network Security</span>
+                            <span class="skill-pill level-familiar">Vulnerability Scanning</span>
+                        </div>
                     </div>
                 </div>
             </div>
