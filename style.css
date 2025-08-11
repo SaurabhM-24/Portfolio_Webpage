@@ -170,7 +170,7 @@ body.dark-mode #node-label-display {
 /* The main content blocks inside the wrapper now need to be centered. */
 .about-me-layout,
 .skills-layout,
-.project-grid,
+.project-slider, /* MODIFIED: was .project-grid */
 .education-timeline,
 .achievements-grid,
 .contact-links {
@@ -302,68 +302,185 @@ body.dark-mode .back-button:hover {
     background-color: #5E35B1;
 }
 
-/* Project Grid */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
+/* ================== START: PROJECT SLIDER STYLES ================== */
+
+.project-slider {
+    position: relative;
     width: 100%;
+    padding: 0 50px; /* Space for the navigation buttons */
+}
+
+.slider__track {
+    display: flex;
+    overflow-x: auto; /* Fallback for no-JS */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For IE/Edge */
+    gap: 25px;
+    padding-bottom: 15px; /* Space for scrollbar if it appears */
+}
+
+.slider__track::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, Opera */
 }
 
 .project-card {
-    background-color: #F5F7FA;
-    border-radius: 10px;
+    flex: 0 0 calc(33.333% - 17px); /* Show 3 cards, account for gap */
+    scroll-snap-align: start;
+    background-color: #FFFFFF;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* REFINEMENT: Add a wrapper for the image to create a border effect */
+.project-card__image-wrapper {
+    padding: 15px 15px 0 15px; /* Creates the "border" */
 }
 
 .project-card__image {
     width: 100%;
-    height: 200px;
+    height: 200px; /* Slightly smaller image */
     object-fit: cover;
+    border-radius: 10px; /* Rounded corners for the image itself */
 }
 
 .project-card__content {
-    padding: 20px;
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .project-card__title {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #3949AB;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.flagship-star {
+    width: 40px; /* REFINEMENT: Bigger star */
+    height: 40px; /* REFINEMENT: Bigger star */
+    color: #FFC107;
+    fill: #FFC107;
 }
 
 .project-card__description {
     font-size: 1rem;
+    line-height: 1.6;
     margin-bottom: 15px;
+    flex-grow: 1;
 }
 
+/* REFINEMENT: Container for the new tech pills */
 .project-card__technologies {
-    font-size: 0.9rem;
-    color: #555;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
     margin-bottom: 20px;
 }
 
+/* REFINEMENT: Styling for the new tech pills */
+.tech-pill {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: #E8EAF6;
+    color: #3F51B5;
+    transition: all 0.3s ease;
+}
+
+.tech-pill:hover {
+    background-color: #C5CAE9;
+}
+
+
 .project-card__links {
     display: flex;
-    gap: 10px;
+    gap: 20px;
+    margin-top: auto;
+    justify-content: center;
 }
 
 .project-card__link {
     color: #5C6BC0;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s;
+}
+
+.project-card__link:hover {
+    color: #3949AB;
 }
 
 .project-card__link.disabled {
     color: #999;
     pointer-events: none;
 }
+
+.project-card__link i {
+    width: 18px;
+    height: 18px;
+}
+
+.slider__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #E0E0E0;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #212121;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.slider__button:hover {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.slider__button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.slider__button--left {
+    left: 0;
+}
+
+.slider__button--right {
+    right: 0;
+}
+
+/* =================== END: PROJECT SLIDER STYLES =================== */
+
 
 .btn {
     display: inline-block;
@@ -702,13 +819,59 @@ body.dark-mode .skill-pill.level-proficient:hover { background-color: #4527A0; }
 body.dark-mode .skill-pill.level-familiar:hover { background-color: #512DA8; opacity: 0.8; }
 
 
-body.dark-mode .project-card, 
+/* MODIFIED: Dark Mode Project Card */
+body.dark-mode .project-card {
+    background-color: #2C2C2C;
+    border-color: #424242;
+}
+
+body.dark-mode .project-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .project-card__image {
+    border-bottom-color: #424242;
+}
+
+body.dark-mode .project-card__title {
+    color: #9575CD; /* Dark mode accent */
+}
+
+/* REFINEMENT: Dark mode for tech pills */
+body.dark-mode .tech-pill {
+    background-color: #372A4F;
+    color: #D1C4E9;
+}
+
+body.dark-mode .tech-pill:hover {
+    background-color: #512DA8;
+    opacity: 0.8;
+}
+
+body.dark-mode .project-card__link {
+    color: #B39DDB;
+}
+
+body.dark-mode .project-card__link:hover {
+    color: #9575CD;
+}
+
+body.dark-mode .slider__button {
+    background-color: rgba(44, 44, 44, 0.8);
+    border-color: #555;
+    color: #E0E0E0;
+}
+
+body.dark-mode .slider__button:hover {
+    background-color: #2C2C2C;
+}
+
+
 body.dark-mode .achievement-card, 
 body.dark-mode .timeline-item__content {
     background-color: #2C2C2C;
 }
 
-body.dark-mode .project-card__link, 
 body.dark-mode .achievement-card__title, 
 body.dark-mode .timeline-item__title {
     color: #9575CD;
@@ -752,7 +915,16 @@ body.dark-mode .cli__input-container {
     border-top-color: #E0E0E0;
 }
 
-/* Responsive Design */
+/* ================== START: RESPONSIVE REFINEMENTS ================== */
+
+/* For Tablets - 2 cards */
+@media (max-width: 1024px) {
+    .project-card {
+        flex-basis: calc(50% - 13px);
+    }
+}
+
+/* For larger mobile phones - 1 card */
 @media (max-width: 768px) {
     .content__wrapper {
         padding-left: 10px;
@@ -764,12 +936,12 @@ body.dark-mode .cli__input-container {
     }
 
     .about-me-layout {
-        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 
     .about-me-layout__left {
-        flex-direction: row; /* Place image and name side-by-side */
+        flex-direction: row;
         align-items: center;
     }
 
@@ -782,8 +954,23 @@ body.dark-mode .cli__input-container {
         text-align: center;
     }
     
-    .project-grid {
-        grid-template-columns: 1fr;
+    .project-slider {
+        padding: 0;
+    }
+
+    .project-card {
+        flex-basis: 90%; /* Show one card, with a little bit of the next one peeking through */
+        scroll-snap-align: center; /* Center the card when snapping */
+    }
+
+    .slider__track {
+        /* Add padding to the track itself so the centered card has space around it */
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .slider__button {
+        display: none; /* Hide buttons on mobile, rely on swipe */
     }
 
     .skill-row {
@@ -800,3 +987,16 @@ body.dark-mode .cli__input-container {
         font-size: 1rem;
     }
 }
+
+/* For very small mobile phones */
+@media (max-width: 480px) {
+    .project-card {
+        flex-basis: 95%; /* Make the card take up almost the full width */
+    }
+     .slider__track {
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+    }
+}
+
+/* =================== END: RESPONSIVE REFINEMENTS =================== */
