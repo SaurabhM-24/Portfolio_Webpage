@@ -128,40 +128,90 @@ body.dark-mode #node-label-display {
 }
 
 
-/* FIXED: Content Section and Wrapper structure for scrolling */
+/* --- START OF SCROLLBAR FIX & REFINEMENT --- */
+
+/* The .content__section is the PADDING container. */
 .content__section {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack children vertically */
+    display: block;
     background-color: transparent;
     opacity: 0;
     visibility: hidden;
-    padding: 80px 0 80px 80px; /* Uniform padding */
+    /* REFINED: Increased top/bottom padding for more breathing room. */
+    padding: 100px 80px; 
     z-index: 150;
-    overflow: hidden; /* Prevent this container from scrolling */
+    overflow: hidden; 
 }
 
+/* The .content__wrapper is the SCROLL container. */
 .content__wrapper {
-    max-width: 1100px;
+    height: 100%; 
     width: 100%;
-    margin: 0 auto; /* Center the wrapper horizontally */
-    text-align: center;
-    overflow-y: auto; /* Enable vertical scrolling */
-    height: 100%; /* Take up available height */
-    padding-right: 40px;
-    padding-bottom: 40px;
+    overflow-y: auto; 
+    max-width: none;
+    margin: 0;
+    text-align: left;
+    /* REFINED: Added bottom padding for space after content. */
+    padding: 0 15px 60px 15px;
 }
 
+/* The title needs to be centered within the new flow. */
 .content__title {
     font-size: 3rem;
-    margin-top: 60px; /* Add margin to push it down from the top */
+    margin-top: 0; 
     margin-bottom: 2rem;
     text-align: center;
 }
+
+/* The main content blocks inside the wrapper now need to be centered. */
+.about-me-layout,
+.skills-layout,
+.project-grid,
+.education-timeline,
+.achievements-grid,
+.contact-links {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Specific centering for simple text/button sections */
+.content__wrapper .content__text,
+.content__wrapper .btn {
+    display: block; 
+    text-align: center;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- REFINED: Custom Scrollbar Styling --- */
+.content__wrapper::-webkit-scrollbar {
+    width: 8px; /* Set width of the scrollbar */
+}
+
+.content__wrapper::-webkit-scrollbar-track {
+    background: transparent; /* Make the track invisible */
+}
+
+.content__wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* A subtle dark color for the thumb */
+    border-radius: 10px; /* Round the scrollbar thumb */
+    border: 2px solid transparent; /* Creates padding around thumb */
+    background-clip: content-box;
+}
+
+body.dark-mode .content__wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2); /* A subtle light color for dark mode */
+}
+
+
+/* --- END OF SCROLLBAR FIX & REFINEMENT --- */
+
 
 /* REVISED: About Me Layout Styles */
 .about-me-layout {
@@ -214,6 +264,7 @@ body.dark-mode #node-label-display {
 .about-me-layout__right .content__text {
     font-size: 1.2rem;
     line-height: 1.7;
+    text-align: left; /* Override centered text for this paragraph */
 }
 
 
@@ -265,6 +316,7 @@ body.dark-mode .back-button:hover {
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+    text-align: left;
 }
 
 .project-card:hover {
@@ -703,16 +755,12 @@ body.dark-mode .cli__input-container {
 /* Responsive Design */
 @media (max-width: 768px) {
     .content__wrapper {
-        max-width: 100%;
-        padding: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .content__section {
-        padding: 60px 20px;
-        top: 20px;
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
+        padding: 20px;
     }
 
     .about-me-layout {
