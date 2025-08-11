@@ -324,7 +324,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 autoAlpha: 1,
                 ease: 'power2.inOut',
                 clipPath: `inset(0 0 0 0 round 20px)`
-            }, '>-0.4');
+            }, '>-0.4')
+            .call(() => {
+                // Initialize slider for the projects section when it opens
+                if (nodeId === 'projects') {
+                    initProjectSlider();
+                }
+                // Re-run feather icons for any new content
+                feather.replace();
+            });
     }
 
     function closeSection(nodeId) {
@@ -401,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         outputLine.innerHTML = `<span class="cli__prompt">&gt;</span> ${command}`;
         cliOutput.appendChild(outputLine);
 
-        const responseLine = document.createElement('div'); // TYPO FIX: Changed ''div' to 'div'
+        const responseLine = document.createElement('div');
         let response = '';
 
         switch (command.toLowerCase()) {
@@ -442,4 +450,41 @@ document.addEventListener('DOMContentLoaded', () => {
         cliOutput.appendChild(responseLine);
         cliOutput.scrollTop = cliOutput.scrollHeight;
     }
+
+    // ================== START: PROJECT SLIDER LOGIC ==================
+    function initProjectSlider() {
+        const slider = document.querySelector('.project-slider');
+        if (!slider) return;
+
+        const track = slider.querySelector('.slider__track');
+        const prevButton = slider.querySelector('.slider__button--left');
+        const nextButton = slider.querySelector('.slider__button--right');
+        
+        const updateButtons = () => {
+            const maxScrollLeft = track.scrollWidth - track.clientWidth;
+            prevButton.disabled = track.scrollLeft <= 0;
+            nextButton.disabled = track.scrollLeft >= maxScrollLeft;
+        };
+
+        const scrollTo = (direction) => {
+            const cardWidth = track.querySelector('.project-card').offsetWidth;
+            const gap = parseInt(window.getComputedStyle(track).gap);
+            const scrollAmount = cardWidth + gap;
+            
+            track.scrollBy({
+                left: direction === 'next' ? scrollAmount : -scrollAmount,
+                behavior: 'smooth'
+            });
+        };
+
+        nextButton.addEventListener('click', () => scrollTo('next'));
+        prevButton.addEventListener('click', () => scrollTo('prev'));
+
+        // Update buttons on scroll (e.g., from user swiping)
+        track.addEventListener('scroll', updateButtons);
+
+        // Initial state
+        updateButtons();
+    }
+    // =================== END: PROJECT SLIDER LOGIC ===================
 });
