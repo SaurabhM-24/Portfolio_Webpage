@@ -486,8 +486,7 @@ body.dark-mode .back-button:hover {
 .education-slider {
     position: relative;
     width: 100%;
-    margin-top: 2rem;
-    padding: 0 50px;
+    padding: 0 50px 50px 50px; 
 }
 
 .education__track {
@@ -566,45 +565,66 @@ body.dark-mode .back-button:hover {
     width: 100%;
     max-width: 600px;
     margin: 40px auto 0 auto;
-    padding: 0 20px;
-    overflow: hidden; /* Crucial for the sliding effect */
+    height: 60px; /* **THE FIX: Increased height** */
+    padding-top: 5px; /* **THE FIX: Added padding to push content down** */
 }
 
 .education-timeline-bar {
-    position: relative;
-    width: 100%;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    right: 0;
     height: 6px;
     background-color: #E0E0E0;
     border-radius: 3px;
+    z-index: 1; /* Behind the dots */
 }
 
 .timeline-dots {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+    position: relative;
     display: flex;
-    gap: 150px; /* Spacing between dots */
+    gap: 150px;
     padding: 0 20px;
-    transition: left 0.3s ease-out; /* Smooth sliding transition */
+    transition: left 0.3s ease-out;
+}
+
+.timeline-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 2; /* Above the bar */
 }
 
 .timeline-dot {
-    position: relative;
     width: 20px;
     height: 20px;
     background-color: #C5CAE9;
     border-radius: 50%;
     border: 4px solid #FFFFFF;
     transition: background-color 0.3s, transform 0.3s;
-    cursor: pointer;
-    flex-shrink: 0; /* Prevent dots from shrinking */
+    flex-shrink: 0;
 }
 
 .timeline-dot.active {
     background-color: #5C6BC0;
     transform: scale(1.25);
 }
+
+.timeline-year {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #555;
+    margin-top: 12px; 
+    transition: color 0.3s;
+}
+
+.timeline-dot.active + .timeline-year {
+    color: #3949AB;
+    font-weight: 700;
+}
+
 
 .education-slider .slider__button {
     top: 45%; /* Adjust vertical position */
@@ -649,6 +669,14 @@ body.dark-mode .timeline-dot {
 
 body.dark-mode .timeline-dot.active {
     background-color: #9575CD;
+}
+
+body.dark-mode .timeline-year {
+    color: #BDBDBD;
+}
+
+body.dark-mode .timeline-dot.active + .timeline-year {
+    color: #9575CD;
 }
 
 /* =================== END: REFINED EDUCATION SLIDER STYLES =================== */

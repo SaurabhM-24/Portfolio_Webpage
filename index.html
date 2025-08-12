@@ -259,10 +259,10 @@
                                 <img src="Assets/iitg_logo.png" alt="IIT Guwahati Logo" onerror="this.style.display='none'">
                             </div>
                             <div class="education-card__details">
-                                <h3 class="education-card__title">B.Sc, Data Science & Artificial Intelligence</h3>
+                                <h3 class="education-card__title">B.Sc, Data Science & AI</h3>
                                 <p class="education-card__institution">Indian Institute of Technology, Guwahati</p>
                                 <p class="education-card__dates">Aug 2024 – May 2028</p>
-                                <p class="education-card__honours">CGPA: 9.32 (Current)</p>
+                                <p class="education-card__honours">Online Degree Program</p>
                             </div>
                         </div>
                         <!-- Card 2: B.Tech -->
@@ -274,7 +274,7 @@
                                 <h3 class="education-card__title">B.Tech, Computer Science & Engineering</h3>
                                 <p class="education-card__institution">Lovely Professional University</p>
                                 <p class="education-card__dates">Aug 2023 – May 2027</p>
-                                <p class="education-card__honours">CGPA: 9.2 (Current)</p>
+                                <p class="education-card__honours">CGPA: 9.2 (Expected)</p>
                             </div>
                         </div>
                         <!-- Card 3: 12th Grade -->
@@ -304,12 +304,24 @@
                     </div>
                     <!-- REFINED: Timeline bar structure for sliding effect -->
                     <div class="education-timeline-bar-container">
-                        <div class="education-timeline-bar">
-                            <div class="timeline-dots">
-                                <span class="timeline-dot" data-year="2028"></span>
-                                <span class="timeline-dot" data-year="2027"></span>
-                                <span class="timeline-dot" data-year="2022"></span>
-                                <span class="timeline-dot" data-year="2020"></span>
+                        <!-- **THE FIX: Moved the bar inside the dots container** -->
+                        <div class="timeline-dots">
+                            <div class="education-timeline-bar"></div>
+                            <div class="timeline-entry">
+                                <span class="timeline-dot"></span>
+                                <span class="timeline-year">2028</span>
+                            </div>
+                            <div class="timeline-entry">
+                                <span class="timeline-dot"></span>
+                                <span class="timeline-year">2027</span>
+                            </div>
+                            <div class="timeline-entry">
+                                <span class="timeline-dot"></span>
+                                <span class="timeline-year">2022</span>
+                            </div>
+                            <div class="timeline-entry">
+                                <span class="timeline-dot"></span>
+                                <span class="timeline-year">2020</span>
                             </div>
                         </div>
                     </div>
