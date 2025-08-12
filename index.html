@@ -259,10 +259,10 @@
                                 <img src="Assets/iitg_logo.png" alt="IIT Guwahati Logo" onerror="this.style.display='none'">
                             </div>
                             <div class="education-card__details">
-                                <h3 class="education-card__title">B.Sc, Data Science & AI</h3>
+                                <h3 class="education-card__title">B.Sc. (Hons.), Data Science & Artificial Intelligence</h3>
                                 <p class="education-card__institution">Indian Institute of Technology, Guwahati</p>
                                 <p class="education-card__dates">Aug 2024 – May 2028</p>
-                                <p class="education-card__honours">Online Degree Program</p>
+                                <p class="education-card__honours">CGPA: 9.32 (Current)</p>
                             </div>
                         </div>
                         <!-- Card 2: B.Tech -->
@@ -274,7 +274,7 @@
                                 <h3 class="education-card__title">B.Tech, Computer Science & Engineering</h3>
                                 <p class="education-card__institution">Lovely Professional University</p>
                                 <p class="education-card__dates">Aug 2023 – May 2027</p>
-                                <p class="education-card__honours">CGPA: 9.2 (Expected)</p>
+                                <p class="education-card__honours">CGPA: 8.86 (Current)</p>
                             </div>
                         </div>
                         <!-- Card 3: 12th Grade -->
@@ -286,7 +286,7 @@
                                 <h3 class="education-card__title">Higher Secondary (XII)</h3>
                                 <p class="education-card__institution">Delhi Public School</p>
                                 <p class="education-card__dates">Finished: Mar 2022</p>
-                                <p class="education-card__honours">Percentage: 96.4%</p>
+                                <p class="education-card__honours">Percentage: 86.4%</p>
                             </div>
                         </div>
                         <!-- Card 4: 10th Grade (Oldest) -->
@@ -334,29 +334,73 @@
                 </div>
             </div>
         </div>
-        <!-- Achievements -->
+                <!-- Achievements -->
         <div class="content__section" id="achievements">
             <div class="content__wrapper">
                 <h1 class="content__title">Achievements & Certificates</h1>
-                <div class="achievements-grid">
-                    <div class="achievement-card">
-                        <h3 class="achievement-card__title">Coding Achievements</h3>
-                        <ul class="achievement-list">
-                            <li>Top 100% in LeetCode</li>
-                            <li>0.1 stars in codechef</li>
-                        </ul>
-                    </div>
-                    <div class="achievement-card">
-                        <h3 class="achievement-card__title">Certificates</h3>
-                        <div class="certificate-images">
-                            <img src="Assets/cert1.png" alt="Certificate 1" class="certificate-image">
-                            <img src="Assets/cert2.png" alt="Certificate 2" class="certificate-image">
-                            <img src="Assets/cert3.png" alt="Certificate 3" class="certificate-image">
+
+                <!-- Main Display Area for Certificates -->
+                <div class="achievement-viewer">
+                    <button class="achievement-viewer__nav achievement-viewer__nav--left"><i data-feather="chevron-left"></i></button>
+
+                    <!-- Certificate slides are now defined directly in HTML -->
+                    <div id="certificate-slides-container">
+                        <div class="certificate-slide active">
+                            <div class="achievement-viewer__image-container">
+                                 <img src="Assets/cert1.png" alt="Object Oriented Programming Certificate">
+                            </div>
+                            <div class="achievement-viewer__details">
+                                <h3>Object Oriented Programming</h3>
+                                <p>Completed a 72-hour online course on Object Oriented Programming from Lovely Professional University on the iamneo platform.</p>
+                            </div>
+                        </div>
+                        <div class="certificate-slide">
+                            <div class="achievement-viewer__image-container">
+                                 <img src="Assets/cert2.png" alt="Java Programming Certificate">
+                            </div>
+                            <div class="achievement-viewer__details">
+                                <h3>Java Programming</h3>
+                                <p>Completed a 72-hour online course on Java Programming from Lovely Professional University on the iamneo platform.</p>
+                            </div>
+                        </div>
+                        <div class="certificate-slide">
+                            <div class="achievement-viewer__image-container">
+                                 <img src="Assets/cert3.png" alt="C Programming Certificate">
+                            </div>
+                            <div class="achievement-viewer__details">
+                                <h3>C Programming Language</h3>
+                                <p>Successfully completed training in C Programming Language from CipherSchools.</p>
+                            </div>
                         </div>
                     </div>
+
+                    <button class="achievement-viewer__nav achievement-viewer__nav--right"><i data-feather="chevron-right"></i></button>
                 </div>
+
+                <!-- Thumbnail Slider for Other Achievements/Links -->
+                <div class="achievement-links-slider">
+                    <button class="slider__button slider__button--left" id="achievements-links-prev"><i data-feather="chevron-left"></i></button>
+                    <div class="slider__track" id="achievement-links-track">
+                        <!-- Achievement links are now defined directly in HTML -->
+                        <a href="#" target="_blank" class="achievement-link-pill">
+                            <i data-feather="award"></i> CodeRush Hackathon
+                        </a>
+                        <a href="#" target="_blank" class="achievement-link-pill">
+                            <i data-feather="star"></i> ByteBash Hackathon
+                        </a>
+                        <a href="https://leetcode.com/u/user-not-found/" target="_blank" class="achievement-link-pill">
+                            <i data-feather="code"></i> LeetCode Profile
+                        </a>
+                        <a href="https://www.codechef.com/users/user-not-found" target="_blank" class="achievement-link-pill">
+                            <i data-feather="trophy"></i> CodeChef Profile
+                        </a>
+                    </div>
+                    <button class="slider__button slider__button--right" id="achievements-links-next"><i data-feather="chevron-right"></i></button>
+                </div>
+
             </div>
         </div>
+
     </div>
 
     <!-- CLI -->

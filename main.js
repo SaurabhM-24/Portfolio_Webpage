@@ -588,3 +588,105 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // =================== END: SIMPLIFIED EDUCATION SLIDER LOGIC ===================
 });
+
+    // ================== START: ACHIEVEMENTS SECTION LOGIC (HTML-FIRST) ==================
+    function initAchievementsSection() {
+        // --- Certificate Viewer Elements & Logic ---
+        const slidesContainer = document.getElementById('certificate-slides-container');
+        if (!slidesContainer) return;
+
+        const slides = slidesContainer.querySelectorAll('.certificate-slide');
+        const certPrevBtn = document.querySelector('.achievement-viewer__nav--left');
+        const certNextBtn = document.querySelector('.achievement-viewer__nav--right');
+        let currentCertIndex = 0;
+
+        function updateCertButtonsState() {
+            const scrollLeft = slidesContainer.scrollLeft;
+            const maxScrollLeft = slidesContainer.scrollWidth - slidesContainer.clientWidth;
+            
+            // Determine current index based on scroll position
+            currentCertIndex = Math.round(scrollLeft / slidesContainer.clientWidth);
+            
+            certPrevBtn.disabled = currentCertIndex === 0;
+            certNextBtn.disabled = currentCertIndex === slides.length - 1;
+        }
+        
+        function scrollToCert(index) {
+            slidesContainer.scrollTo({
+                left: index * slidesContainer.clientWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        certPrevBtn?.addEventListener('click', () => {
+            if (currentCertIndex > 0) {
+                scrollToCert(currentCertIndex - 1);
+            }
+        });
+
+        certNextBtn?.addEventListener('click', () => {
+            if (currentCertIndex < slides.length - 1) {
+                scrollToCert(currentCertIndex + 1);
+            }
+        });
+
+        // --- NEW: Listen for manual scrolls (touch/trackpad) ---
+        slidesContainer?.addEventListener('scroll', () => {
+            // Use a timeout to prevent the function from firing too rapidly
+            // and to wait until the scroll-snap has settled.
+            clearTimeout(slidesContainer.scrollTimeout);
+            slidesContainer.scrollTimeout = setTimeout(updateCertButtonsState, 150);
+        });
+
+
+        // --- Links Slider Elements & Logic ---
+        const linksTrack = document.getElementById('achievement-links-track');
+        const linksPrevBtn = document.getElementById('achievements-links-prev');
+        const linksNextBtn = document.getElementById('achievements-links-next');
+
+        function updateLinkButtonsState() {
+            if (!linksTrack) return;
+            const maxScrollLeft = linksTrack.scrollWidth - linksTrack.clientWidth;
+            linksPrevBtn.disabled = linksTrack.scrollLeft < 1;
+            linksNextBtn.disabled = linksTrack.scrollLeft > maxScrollLeft - 1;
+        }
+
+        function scrollLinksSlider(direction) {
+            if (!linksTrack) return;
+            const scrollAmount = linksTrack.clientWidth * 0.8;
+            linksTrack.scrollBy({
+                left: direction === 'next' ? scrollAmount : -scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+        
+        linksPrevBtn?.addEventListener('click', () => scrollLinksSlider('prev'));
+        linksNextBtn?.addEventListener('click', () => scrollLinksSlider('next'));
+        
+        linksTrack?.addEventListener('scroll', updateLinkButtonsState);
+        
+        // Initial setup
+        updateCertButtonsState();
+        updateLinkButtonsState();
+        feather.replace();
+    }
+    
+    // --- MODIFIED: How the achievement script is called ---
+    const achievementsSection = document.getElementById('achievements');
+    
+    const observer = new MutationObserver((mutationsList, observer) => {
+        for(const mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                const sectionElement = mutation.target;
+                if (sectionElement.style.opacity === '1' && !sectionElement.hasAttribute('data-initialized')) {
+                    initAchievementsSection();
+                    sectionElement.setAttribute('data-initialized', 'true');
+                }
+            }
+        }
+    });
+
+    if (achievementsSection) {
+        observer.observe(achievementsSection, { attributes: true });
+    }
+    // =================== END: ACHIEVEMENTS SECTION LOGIC ====================

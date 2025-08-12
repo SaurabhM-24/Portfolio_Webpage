@@ -1170,3 +1170,225 @@ body.dark-mode .cli__input-container {
 }
 
 /* =================== END: RESPONSIVE REFINEMENTS =================== */
+/* ================== START: ACHIEVEMENTS SECTION STYLES ================== */
+
+.achievement-viewer {
+    position: relative;
+    padding: 30px 80px;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 20px;
+    max-width: 1100px;
+    margin: 2rem auto;
+    overflow: hidden; 
+}
+
+/* --- MODIFIED: This is now a proper scroll snap container --- */
+#certificate-slides-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to slides */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+#certificate-slides-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+
+.achievement-viewer__image-container {
+    flex-basis: 55%;
+    flex-shrink: 0;
+    height: 450px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+}
+
+.achievement-viewer__image-container img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-viewer__details {
+    flex-basis: 45%;
+    text-align: left;
+    padding: 0 15px;
+}
+
+.achievement-viewer__details h3 {
+    font-size: 1.8rem;
+    color: #3949AB;
+    margin-bottom: 1rem;
+}
+
+.achievement-viewer__details p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.achievement-viewer__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+}
+.achievement-viewer__nav--left {
+    left: 20px;
+}
+.achievement-viewer__nav--right {
+    right: 20px;
+}
+
+.achievement-viewer__nav:hover {
+    transform: translateY(-50%) scale(1.1);
+    background-color: #5C6BC0;
+    color: #fff;
+}
+
+.achievement-viewer__nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+    background-color: #fff;
+    color: #333;
+}
+body.dark-mode .achievement-viewer__nav:disabled {
+    background-color: #424242;
+    color: #E0E0E0;
+}
+
+
+.achievement-links-slider {
+    position: relative;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 50px;
+}
+
+#achievement-links-track {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+#achievement-links-track::-webkit-scrollbar {
+    display: none;
+}
+
+.achievement-link-pill {
+    flex: 0 0 auto;
+    padding: 12px 25px;
+    background-color: #E8EAF6;
+    color: #3F51B5;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    scroll-snap-align: start;
+}
+
+.achievement-link-pill:hover {
+    background-color: #5C6BC0;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.achievement-link-pill i {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* Dark Mode for Achievements */
+body.dark-mode .achievement-viewer {
+    background-color: #2C2C2C;
+}
+
+body.dark-mode .achievement-viewer__details h3 {
+    color: #9575CD;
+}
+
+body.dark-mode .achievement-viewer__nav {
+    background-color: #424242;
+    border-color: #555;
+    color: #E0E0E0;
+}
+
+body.dark-mode .achievement-viewer__nav:hover {
+    background-color: #7E57C2;
+}
+
+body.dark-mode .achievement-link-pill {
+    background-color: #372A4F;
+    color: #D1C4E9;
+}
+body.dark-mode .achievement-link-pill:hover {
+    background-color: #7E57C2;
+    color: #FFFFFF;
+}
+
+/* Responsive adjustments for Achievements */
+@media (max-width: 768px) {
+    .achievement-viewer {
+        padding: 20px 60px;
+    }
+    .achievement-viewer__nav--left {
+        left: 5px;
+    }
+    .achievement-viewer__nav--right {
+        right: 5px;
+    }
+    .achievement-links-slider {
+        padding: 0;
+    }
+    .achievement-links-slider .slider__button {
+        display: none;
+    }
+    .achievement-viewer__image-container {
+        height: 300px;
+    }
+}
+
+.certificate-slide {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: center; /* --- NEW: Define the snap point --- */
+}
+
+
+@media (max-width: 768px) {
+    .certificate-slide {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* =================== END: ACHIEVEMENTS SECTION STYLES =================== */
