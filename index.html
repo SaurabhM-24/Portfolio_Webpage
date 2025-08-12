@@ -251,21 +251,74 @@
         <div class="content__section" id="education">
             <div class="content__wrapper">
                 <h1 class="content__title">Education</h1>
-                <div class="education-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-item__content">
-                            <h3 class="timeline-item__title">B.Tech in Computer Science and Engineering</h3>
-                            <p class="timeline-item__institution">Lovely Professional University</p>
-                            <p class="timeline-item__dates">Aug 2023 – May 2027</p>
+                <div class="education-slider">
+                    <div class="slider__track education__track">
+                        <!-- Card 1: B.Sc (Latest) -->
+                        <div class="education-card">
+                            <div class="education-card__logo">
+                                <img src="Assets/iitg_logo.png" alt="IIT Guwahati Logo" onerror="this.style.display='none'">
+                            </div>
+                            <div class="education-card__details">
+                                <h3 class="education-card__title">B.Sc, Data Science & Artificial Intelligence</h3>
+                                <p class="education-card__institution">Indian Institute of Technology, Guwahati</p>
+                                <p class="education-card__dates">Aug 2024 – May 2028</p>
+                                <p class="education-card__honours">CGPA: 9.32 (Current)</p>
+                            </div>
+                        </div>
+                        <!-- Card 2: B.Tech -->
+                        <div class="education-card">
+                            <div class="education-card__logo">
+                                <img src="Assets/lpu_logo.png" alt="Lovely Professional University Logo" onerror="this.style.display='none'">
+                            </div>
+                            <div class="education-card__details">
+                                <h3 class="education-card__title">B.Tech, Computer Science & Engineering</h3>
+                                <p class="education-card__institution">Lovely Professional University</p>
+                                <p class="education-card__dates">Aug 2023 – May 2027</p>
+                                <p class="education-card__honours">CGPA: 9.2 (Current)</p>
+                            </div>
+                        </div>
+                        <!-- Card 3: 12th Grade -->
+                        <div class="education-card">
+                            <div class="education-card__logo">
+                                <img src="Assets/dps_logo.png" alt="School Logo" onerror="this.style.display='none'">
+                            </div>
+                            <div class="education-card__details">
+                                <h3 class="education-card__title">Higher Secondary (XII)</h3>
+                                <p class="education-card__institution">Delhi Public School</p>
+                                <p class="education-card__dates">Finished: Mar 2022</p>
+                                <p class="education-card__honours">Percentage: 96.4%</p>
+                            </div>
+                        </div>
+                        <!-- Card 4: 10th Grade (Oldest) -->
+                        <div class="education-card">
+                            <div class="education-card__logo">
+                                <img src="Assets/sbdav_logo.png" alt="School Logo" onerror="this.style.display='none'">
+                            </div>
+                            <div class="education-card__details">
+                                <h3 class="education-card__title">Senior Secondary (X)</h3>
+                                <p class="education-card__institution">Suraj Bhan D.A.V. Public School</p>
+                                <p class="education-card__dates">Finished: Mar 2020</p>
+                                <p class="education-card__honours">Percentage: 94.2%</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-item__content">
-                            <h3 class="timeline-item__title">B.Sc in Data Science and Artificial Intelligence</h3>
-                            <p class="timeline-item__institution">Indian Institute of Technology Guwahati</p>
-                            <p class="timeline-item__dates">Aug 2024 – May 2028</p>
+                    <!-- REFINED: Timeline bar structure for sliding effect -->
+                    <div class="education-timeline-bar-container">
+                        <div class="education-timeline-bar">
+                            <div class="timeline-dots">
+                                <span class="timeline-dot" data-year="2028"></span>
+                                <span class="timeline-dot" data-year="2027"></span>
+                                <span class="timeline-dot" data-year="2022"></span>
+                                <span class="timeline-dot" data-year="2020"></span>
+                            </div>
                         </div>
                     </div>
+                    <button class="slider__button slider__button--left education-slider__button--left">
+                        <i data-feather="chevron-left"></i>
+                    </button>
+                    <button class="slider__button slider__button--right education-slider__button--right">
+                        <i data-feather="chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>

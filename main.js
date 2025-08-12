@@ -330,6 +330,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (nodeId === 'projects') {
                     initProjectSlider();
                 }
+                // NEW: Initialize slider for the education section
+                if (nodeId === 'education') {
+                    initEducationSlider();
+                }
                 // Re-run feather icons for any new content
                 feather.replace();
             });
@@ -462,8 +466,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const updateButtons = () => {
             const maxScrollLeft = track.scrollWidth - track.clientWidth;
-            prevButton.disabled = track.scrollLeft <= 0;
-            nextButton.disabled = track.scrollLeft >= maxScrollLeft;
+            prevButton.disabled = track.scrollLeft <= 1;
+            nextButton.disabled = track.scrollLeft >= maxScrollLeft -1;
         };
 
         const scrollTo = (direction) => {
@@ -478,7 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         nextButton.addEventListener('click', () => scrollTo('next'));
-        prevButton.addEventListener('click', () => scrollTo('prev'));
+        prevButton.addEventListener('click',()=> scrollTo('prev'));
 
         // Update buttons on scroll (e.g., from user swiping)
         track.addEventListener('scroll', updateButtons);
@@ -487,4 +491,100 @@ document.addEventListener('DOMContentLoaded', () => {
         updateButtons();
     }
     // =================== END: PROJECT SLIDER LOGIC ===================
+
+    // ================== START: SIMPLIFIED EDUCATION SLIDER LOGIC ==================
+    function initEducationSlider() {
+        const slider = document.querySelector('.education-slider');
+        if (!slider) return;
+
+        const track = slider.querySelector('.education__track');
+        const prevButton = slider.querySelector('.education-slider__button--left');
+        const nextButton = slider.querySelector('.education-slider__button--right');
+        const dotsContainer = slider.querySelector('.timeline-dots');
+        const dots = slider.querySelectorAll('.timeline-dot');
+        const cards = track.querySelectorAll('.education-card');
+
+        if (!track || !prevButton || !nextButton || !dotsContainer || dots.length === 0) return;
+
+        const updateUI = () => {
+            // Update button states and highlight the correct dot.
+            const scrollLeft = track.scrollLeft;
+            const maxScrollLeft = track.scrollWidth - track.clientWidth;
+            const tolerance = 1;
+
+            prevButton.disabled = scrollLeft <= tolerance;
+            nextButton.disabled = scrollLeft >= maxScrollLeft - tolerance;
+
+            let closestCardIndex = 0;
+            let minDistance = Infinity;
+            const trackCenter = track.clientWidth / 2;
+
+            cards.forEach((card, index) => {
+                const cardCenter = card.offsetLeft - scrollLeft + card.offsetWidth / 2;
+                const distance = Math.abs(trackCenter - cardCenter);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestCardIndex = index;
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === closestCardIndex);
+            });
+
+            // Slide the timeline dots
+            const scrollPercentage = scrollLeft / (maxScrollLeft || 1);
+            const dotsMovableWidth = dotsContainer.scrollWidth - dotsContainer.parentElement.clientWidth;
+            const dotsNewLeft = -scrollPercentage * dotsMovableWidth;
+            
+            dotsContainer.style.left = `${dotsNewLeft}px`;
+        };
+
+        const scrollToCard = (index) => {
+            // Simplified scroll logic using scrollIntoView
+            if (cards[index]) {
+                cards[index].scrollIntoView({
+                    behavior: 'smooth',
+                    inline: 'center',
+                    block: 'nearest'
+                });
+            }
+        };
+
+        nextButton.addEventListener('click', () => {
+            const currentActive = slider.querySelector('.timeline-dot.active');
+            let currentIndex = Array.from(dots).indexOf(currentActive);
+            if (currentIndex < cards.length - 1) {
+                scrollToCard(currentIndex + 1);
+            } else {
+                // If on the last card, a "next" click does nothing.
+                // This prevents trying to scroll past the end.
+            }
+        });
+
+        prevButton.addEventListener('click', () => {
+            const currentActive = slider.querySelector('.timeline-dot.active');
+            let currentIndex = Array.from(dots).indexOf(currentActive);
+            if (currentIndex > 0) {
+                scrollToCard(currentIndex - 1);
+            }
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                scrollToCard(index);
+            });
+        });
+
+        // The scroll event listener now only updates the UI. No snapping.
+        track.addEventListener('scroll', () => {
+            window.requestAnimationFrame(updateUI);
+        });
+
+        window.addEventListener('resize', updateUI);
+
+        // Initial state
+        updateUI();
+    }
+    // =================== END: SIMPLIFIED EDUCATION SLIDER LOGIC ===================
 });
