@@ -220,12 +220,36 @@
         </div>
         <!-- Resume -->
         <div class="content__section" id="resume">
-            <div class="content__wrapper">
-                <h1 class="content__title">Resume</h1>
-                <p class="content__text">You can download my resume by clicking the button below.</p>
-                <a href="Assets/Resume.pdf" target="_blank" class="btn">Download Resume</a>
+    <div class="content__wrapper">
+        <h1 class="content__title">Resume</h1>
+        
+        <div class="resume-layout">
+            <div class="resume-preview">
+                <img src="Assets/resume_ats_preview.jpeg" alt="ATS-Friendly Resume Preview">
+                <p class="resume-label">ATS-Optimized Resume</p>
+            </div>
+
+            <div class="resume-preview">
+                <img src="Assets/resume_creative_preview.jpeg" alt="Creative Resume Preview">
+                <p class="resume-label">Creative Resume</p>
+            </div>
+
+            <div class="resume-actions">
+                <div class="call-to-action">
+                    <p>Choose the best format for your needs. The ATS version is for automated systems, while the Creative version is for human recruiters.</p>
+                </div>
+                <a href="Assets/Saurabh_Mishra_Resume_ATS.pdf" target="_blank" class="btn resume-btn">
+                    Download ATS Resume
+                    <i data-feather="download"></i>
+                </a>
+                <a href="Assets/Saurabh_Mishra_Resume_Creative.pdf" target="_blank" class="btn resume-btn">
+                    Download Creative Resume
+                    <i data-feather="download"></i>
+                </a>
             </div>
         </div>
+    </div>
+</div>
         <!-- Contact -->
         <div class="content__section" id="contact">
             <div class="content__wrapper">
@@ -401,6 +425,11 @@
             </div>
         </div>
 
+    </div>
+
+    <div id="image-modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-image">
     </div>
 
     <!-- CLI -->

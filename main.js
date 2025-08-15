@@ -690,3 +690,41 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(achievementsSection, { attributes: true });
     }
     // =================== END: ACHIEVEMENTS SECTION LOGIC ====================
+/* ================== START: IMAGE MODAL LOGIC ================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Get the modal elements
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("modal-image");
+    const closeBtn = document.querySelector(".modal-close");
+
+    // Get all resume preview images
+    const resumeImages = document.querySelectorAll(".resume-preview img");
+
+    // Attach click event to each resume image
+    resumeImages.forEach(img => {
+        img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        }
+    });
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    if (closeBtn) {
+        closeBtn.onclick = closeModal;
+    }
+
+    // When the user clicks anywhere on the modal background, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+});
+
+/* =================== END: IMAGE MODAL LOGIC =================== */
