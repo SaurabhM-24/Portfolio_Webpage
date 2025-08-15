@@ -728,3 +728,85 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =================== END: IMAGE MODAL LOGIC =================== */
+/* ================== START: CONTACT FORM SUBMISSION LOGIC (Corrected) ================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    let statusTimer; // To hold our timer
+
+    // Function to show the status message
+    function showStatusMessage(message, type) {
+        clearTimeout(statusTimer); // Clear any existing timer
+
+        formStatus.textContent = message;
+        formStatus.className = ``; // Reset classes
+        formStatus.classList.add(type); // Add success or error
+        
+        // Trigger fly-in animation
+        formStatus.classList.add('visible');
+
+        // Set a timer to make it fly out after 4 seconds
+        statusTimer = setTimeout(() => {
+            formStatus.classList.add('fly-out');
+
+            // Hide the element completely after the fly-out animation finishes
+            setTimeout(() => {
+                formStatus.classList.remove('visible', 'fly-out');
+            }, 500); // Matches the animation duration
+
+        }, 4000); // Message stays on screen for 4 seconds
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const data = new FormData(form);
+            const action = form.action;
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            // Store the original button text
+            const originalButtonHTML = submitButton.innerHTML;
+
+            submitButton.disabled = true;
+            // Update button content with a loader
+            submitButton.innerHTML = `Sending... <i data-feather="loader" class="spinner"></i>`;
+            // Add a simple spinner animation class via CSS
+            const style = document.createElement('style');
+            style.innerHTML = `@keyframes spin { 100% { transform: rotate(360deg); } } .spinner { animation: spin 1s linear infinite; }`;
+            document.head.appendChild(style);
+            
+            feather.replace();
+
+            fetch(action, {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    showStatusMessage("Thanks! Your message has been sent.", 'success');
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        const errorMessage = data.errors ? data.errors.map(err => err.message).join(', ') : "Oops! Something went wrong.";
+                        showStatusMessage(errorMessage, 'error');
+                    });
+                }
+            }).catch(error => {
+                showStatusMessage("Network error. Please try again.", 'error');
+            }).finally(() => {
+                // **THE FIX IS HERE:** Restore the original button content and re-enable it.
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonHTML;
+                feather.replace();
+                document.head.removeChild(style); // Clean up the spinner style
+            });
+        });
+    }
+});
+
+/* =================== END: CONTACT FORM SUBMISSION LOGIC (Corrected) =================== */
