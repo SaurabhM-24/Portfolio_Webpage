@@ -3,483 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The portfolio of Saurabh Mishra, an aspiring software engineer specializing in web development, cybersecurity, and artificial intelligence.">
     <title>Saurabh Mishra - Portfolio</title>
+    
+    <!-- Stylesheets and Fonts -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Particle background -->
+
+    <!-- Background and Global Elements -->
     <div id="particles-js"></div>
-
-    <!-- Theme toggle -->
-    <div class="theme-toggle">
+    <button class="theme-toggle" aria-label="Toggle dark mode">
         <i data-feather="moon"></i>
-    </div>
+    </button>
 
-    <!-- Main container for the physics-based navigation -->
-    <div class="container">
-        <!-- SVG container for the connecting lines -->
-        <svg id="line-svg" width="100%" height="100%"></svg>
-        
-        <!-- Nodes will be dynamically generated here by the script -->
-    </div>
-
-    <!-- Display for the name of the hovered node -->
-    <div id="node-label-display"></div>
-
-    <!-- Content sections -->
-    <div class="content">
-        <!-- About Me -->
-        <div class="content__section" id="about">
-            <div class="content__wrapper">
-                <!-- FIXED: Title is now outside the layout, consistent with other sections -->
-                <h1 class="content__title">About Me</h1>
-                <div class="about-me-layout">
-                    <div class="about-me-layout__left">
-                        <img src="Assets/me.jpg" alt="Saurabh Mishra" class="about-me__image">
-                        <div class="about-me__name-title">
-                            <h2>Saurabh Mishra</h2>
-                            <p>Aspiring Software Engineer</p>
-                        </div>
-                    </div>
-                    <div class="about-me-layout__right">
-                        <p class="content__text">
-                            I'm a dedicated Computer Science student pursuing a double major in CSE with a minor in Cybersecurity, and Data Science & Artificial Intelligence. I specialize in building robust, scalable web applications and developing intelligent solutions with a strong focus on security. My academic work is complemented by hands-on experience with real-world projects in Python, C++, and full-stack web development. I'm currently working on a Vulnerability Management Dashboard as my flagship cybersecurity project.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <!-- Main Content Area -->
+    <main>
+        <!-- Physics Navigation -->
+        <div class="container">
+            <svg id="line-svg" width="100%" height="100%"></svg>
+            <!-- Nodes will be dynamically generated here by the script -->
         </div>
-        <!-- Skills -->
-        <div class="content__section" id="skills">
-            <div class="content__wrapper">
-                <h1 class="content__title">Skills</h1>
-                <div class="skills-layout">
-                    <!-- Languages -->
-                    <div class="skill-row">
-                        <span class="skill-row__title">Languages</span>
-                        <div class="skill-pills">
-                            <span class="skill-pill level-expert">Python</span>
-                            <span class="skill-pill level-expert">C++</span>
-                            <span class="skill-pill level-proficient">C</span>
-                            <span class="skill-pill level-proficient">Java</span>
-                            <span class="skill-pill level-proficient">SQL</span>
-                            <span class="skill-pill level-expert">HTML, CSS, JavaScript</span>
+
+        <!-- Node Label Display -->
+        <div id="node-label-display"></div>
+
+        <!-- Hidden Content Sections -->
+        <div class="content">
+
+            <!-- About Me Section -->
+            <section class="content__section" id="about" aria-labelledby="about-title" tabindex="-1">
+                <div class="content__wrapper">
+                    <h1 id="about-title" class="content__title">About Me</h1>
+                    <div class="about-me-layout">
+                        <div class="about-me-layout__left">
+                            <img src="Assets/me.jpg" alt="A photo of Saurabh Mishra" class="about-me__image">
+                            <div class="about-me__name-title">
+                                <h2>Saurabh Mishra</h2>
+                                <p>Aspiring Software Engineer</p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Frameworks & Libraries -->
-                    <div class="skill-row">
-                        <span class="skill-row__title">Frameworks & Libraries</span>
-                        <div class="skill-pills">
-                            <span class="skill-pill level-expert">React.js</span>
-                            <span class="skill-pill level-proficient">TailwindCSS</span>
-                            <span class="skill-pill level-proficient">Flask (for APIs)</span>
-                            <span class="skill-pill level-familiar">Pandas</span>
-                            <span class="skill-pill level-familiar">NumPy</span>
-                        </div>
-                    </div>
-                    <!-- Databases -->
-                    <div class="skill-row">
-                        <span class="skill-row__title">Databases</span>
-                        <div class="skill-pills">
-                            <span class="skill-pill level-proficient">MySQL</span>
-                            <span class="skill-pill level-familiar">MongoDB</span>
-                        </div>
-                    </div>
-                    <!-- Tools & Platforms -->
-                    <div class="skill-row">
-                        <span class="skill-row__title">Tools & Platforms</span>
-                        <div class="skill-pills">
-                            <span class="skill-pill level-expert">Git & GitHub</span>
-                            <span class="skill-pill level-proficient">VS Code</span>
-                            <span class="skill-pill level-familiar">Figma</span>
-                            <span class="skill-pill level-familiar">Postman</span>
-                            <span class="skill-pill level-proficient">Linux</span>
-                        </div>
-                    </div>
-                    <!-- Cybersecurity -->
-                    <div class="skill-row">
-                        <span class="skill-row__title">Cybersecurity</span>
-                        <div class="skill-pills">
-                            <span class="skill-pill level-proficient">OWASP Top 10</span>
-                            <span class="skill-pill level-familiar">Network Security</span>
-                            <span class="skill-pill level-familiar">Vulnerability Scanning</span>
+                        <div class="about-me-layout__right">
+                            <p class="content__text">
+                                I'm a dedicated Computer Science student pursuing a double major in CSE with a minor in Cybersecurity, and Data Science & Artificial Intelligence. I specialize in building robust, scalable web applications and developing intelligent solutions with a strong focus on security. My academic work is complemented by hands-on experience with real-world projects in Python, C++, and full-stack web development. I'm currently working on a Vulnerability Management Dashboard as my flagship cybersecurity project.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Projects -->
-        <div class="content__section" id="projects">
-            <div class="content__wrapper">
-                <h1 class="content__title">Projects</h1>
-                <div class="project-slider">
-                    <div class="slider__track">
-                        <!-- Project 1: Vulnerability Management Dashboard -->
-                        <div class="project-card project-card--flagship">
-                            <div class="project-card__image-wrapper">
-                                <img src="Assets/vulnerability_sc.png" alt="Vulnerability Management Dashboard" class="project-card__image">
-                            </div>
-                            <div class="project-card__content">
-                                <h3 class="project-card__title">
-                                    Vulnerability Management Dashboard
-                                    <i data-feather="star" class="flagship-star"></i>
-                                </h3>
-                                <p class="project-card__description">A full-stack web application for cybersecurity professionals to detect, track, and manage system vulnerabilities.</p>
-                                <div class="project-card__technologies">
-                                    <span class="tech-pill">React.js</span>
-                                    <span class="tech-pill">TailwindCSS</span>
-                                    <span class="tech-pill">Flask</span>
-                                    <span class="tech-pill">REST APIs</span>
-                                    <span class="tech-pill">MongoDB</span>
-                                </div>
-                                <div class="project-card__links">
-                                    <a href="http://vuln.live.com" target="_blank" class="project-card__link">
-                                        <i data-feather="link"></i> Live Demo
-                                    </a>
-                                    <a href="http://git.vul.com" target="_blank" class="project-card__link">
-                                        <i data-feather="github"></i> GitHub
-                                    </a>
-                                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="content__section" id="skills" aria-labelledby="skills-title" tabindex="-1">
+                <div class="content__wrapper">
+                    <h1 id="skills-title" class="content__title">Skills</h1>
+                    <div class="skills-layout">
+                        <div class="skill-row">
+                            <span class="skill-row__title">Languages</span>
+                            <div class="skill-pills">
+                                <span class="skill-pill level-expert">Python</span>
+                                <span class="skill-pill level-expert">C++</span>
+                                <span class="skill-pill level-proficient">C</span>
+                                <span class="skill-pill level-proficient">Java</span>
+                                <span class="skill-pill level-proficient">SQL</span>
+                                <span class="skill-pill level-expert">HTML, CSS, JavaScript</span>
                             </div>
                         </div>
-                        <!-- Project 2: Library Management System -->
-                        <div class="project-card">
-                             <div class="project-card__image-wrapper">
-                                <img src="Assets/lib_sc.png" alt="Library Management System" class="project-card__image">
-                            </div>
-                            <div class="project-card__content">
-                                <h3 class="project-card__title">Library Management System</h3>
-                                <p class="project-card__description">A comprehensive CRUD-based system to manage library data, including books, members, and transactions.</p>
-                                <div class="project-card__technologies">
-                                    <span class="tech-pill">Python</span>
-                                    <span class="tech-pill">MySQL</span>
-                                </div>
-                                <div class="project-card__links">
-                                    <a href="#" class="project-card__link disabled">
-                                        <i data-feather="link"></i> Live Demo (N/A)
-                                    </a>
-                                    <a href="http://git.lib.com" target="_blank" class="project-card__link">
-                                        <i data-feather="github"></i> GitHub
-                                    </a>
-                                </div>
+                        <div class="skill-row">
+                            <span class="skill-row__title">Frameworks & Libraries</span>
+                            <div class="skill-pills">
+                                <span class="skill-pill level-expert">React.js</span>
+                                <span class="skill-pill level-proficient">TailwindCSS</span>
+                                <span class="skill-pill level-proficient">Flask (for APIs)</span>
+                                <span class="skill-pill level-familiar">Pandas</span>
+                                <span class="skill-pill level-familiar">NumPy</span>
                             </div>
                         </div>
-                        <!-- Project 3: Snake Game | Spaceship Game -->
-                        <div class="project-card">
-                             <div class="project-card__image-wrapper">
-                                <img src="Assets/snake.sc.png" alt="Snake Game" class="project-card__image">
-                            </div>
-                            <div class="project-card__content">
-                                <h3 class="project-card__title">Snake Game | Spaceship Game</h3>
-                                <p class="project-card__description">Classic arcade-style games built using Pygame to explore game loops, event handling, and collision logic.</p>
-                                <div class="project-card__technologies">
-                                    <span class="tech-pill">Python</span>
-                                    <span class="tech-pill">Pygame</span>
-                                </div>
-                                <div class="project-card__links">
-                                    <a href="https://github.com/SaurabhM-24/Snake-Game" target="_blank" class="project-card__link">
-                                        <i data-feather="github"></i> GitHub
-                                    </a>
-                                </div>
+                        <div class="skill-row">
+                            <span class="skill-row__title">Databases</span>
+                            <div class="skill-pills">
+                                <span class="skill-pill level-proficient">MySQL</span>
+                                <span class="skill-pill level-familiar">MongoDB</span>
                             </div>
                         </div>
-                        <!-- Project 4: Personal Portfolio Website -->
-                        <div class="project-card">
-                             <div class="project-card__image-wrapper">
-                                <img src="Assets/portfolio_sc.png" alt="Personal Portfolio Website" class="project-card__image">
+                        <div class="skill-row">
+                            <span class="skill-row__title">Tools & Platforms</span>
+                            <div class="skill-pills">
+                                <span class="skill-pill level-expert">Git & GitHub</span>
+                                <span class="skill-pill level-proficient">VS Code</span>
+                                <span class="skill-pill level-familiar">Figma</span>
+                                <span class="skill-pill level-familiar">Postman</span>
+                                <span class="skill-pill level-proficient">Linux</span>
                             </div>
-                            <div class="project-card__content">
-                                <h3 class="project-card__title">Personal Portfolio Website</h3>
-                                <p class="project-card__description">A modern and responsive portfolio website to showcase technical work, certifications, and academic background.</p>
-                                <div class="project-card__technologies">
-                                    <span class="tech-pill">React.js</span>
-                                    <span class="tech-pill">TailwindCSS</span>
-                                </div>
-                                <div class="project-card__links">
-                                    <a href="http://porti.com" target="_blank" class="project-card__link">
-                                        <i data-feather="link"></i> Live Demo
-                                    </a>
-                                    <a href="http://git.port.com" target="_blank" class="project-card__link">
-                                        <i data-feather="github"></i> GitHub
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-row__title">Cybersecurity</span>
+                            <div class="skill-pills">
+                                <span class="skill-pill level-proficient">OWASP Top 10</span>
+                                <span class="skill-pill level-familiar">Network Security</span>
+                                <span class="skill-pill level-familiar">Vulnerability Scanning</span>
                             </div>
                         </div>
                     </div>
-                    <button class="slider__button slider__button--left">
-                        <i data-feather="chevron-left"></i>
-                    </button>
-                    <button class="slider__button slider__button--right">
-                        <i data-feather="chevron-right"></i>
-                    </button>
                 </div>
-            </div>
-        </div>
-        <!-- Resume -->
-        <div class="content__section" id="resume">
-    <div class="content__wrapper">
-        <h1 class="content__title">Resume</h1>
-        
-        <div class="resume-layout">
-            <div class="resume-preview">
-                <img src="Assets/resume_ats_preview.jpeg" alt="ATS-Friendly Resume Preview">
-                <p class="resume-label">ATS-Optimized Resume</p>
-            </div>
+            </section>
 
-            <div class="resume-preview">
-                <img src="Assets/resume_creative_preview.jpeg" alt="Creative Resume Preview">
-                <p class="resume-label">Creative Resume</p>
-            </div>
-
-            <div class="resume-actions">
-                <div class="call-to-action">
-                    <p>Choose the best format for your needs. The ATS version is for automated systems, while the Creative version is for human recruiters.</p>
+            <!-- Projects Section -->
+            <section class="content__section" id="projects" aria-labelledby="projects-title" tabindex="-1">
+                <div class="content__wrapper">
+                    <h1 id="projects-title" class="content__title">Projects</h1>
+                    <div class="project-slider">
+                        <div class="slider__track">
+                            <div class="project-card project-card--flagship">
+                                <div class="project-card__image-wrapper">
+                                    <img src="Assets/vulnerability_sc.png" alt="Vulnerability Management Dashboard" class="project-card__image">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">
+                                        Vulnerability Management Dashboard
+                                        <i data-feather="star" class="flagship-star"></i>
+                                    </h3>
+                                    <p class="project-card__description">A full-stack web application for cybersecurity professionals to detect, track, and manage system vulnerabilities.</p>
+                                    <div class="project-card__technologies">
+                                        <span class="tech-pill">React.js</span>
+                                        <span class="tech-pill">TailwindCSS</span>
+                                        <span class="tech-pill">Flask</span>
+                                        <span class="tech-pill">REST APIs</span>
+                                        <span class="tech-pill">MongoDB</span>
+                                    </div>
+                                    <div class="project-card__links">
+                                        <a href="http://vuln.live.com" target="_blank" class="project-card__link">
+                                            <i data-feather="link"></i> Live Demo
+                                        </a>
+                                        <a href="http://git.vul.com" target="_blank" class="project-card__link">
+                                            <i data-feather="github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                 <div class="project-card__image-wrapper">
+                                    <img src="Assets/lib_sc.png" alt="Library Management System" class="project-card__image">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">Library Management System</h3>
+                                    <p class="project-card__description">A comprehensive CRUD-based system to manage library data, including books, members, and transactions.</p>
+                                    <div class="project-card__technologies">
+                                        <span class="tech-pill">Python</span>
+                                        <span class="tech-pill">MySQL</span>
+                                    </div>
+                                    <div class="project-card__links">
+                                        <a href="#" class="project-card__link disabled">
+                                            <i data-feather="link"></i> Live Demo (N/A)
+                                        </a>
+                                        <a href="http://git.lib.com" target="_blank" class="project-card__link">
+                                            <i data-feather="github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                 <div class="project-card__image-wrapper">
+                                    <img src="Assets/snake.sc.png" alt="Snake Game" class="project-card__image">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">Snake Game | Spaceship Game</h3>
+                                    <p class="project-card__description">Classic arcade-style games built using Pygame to explore game loops, event handling, and collision logic.</p>
+                                    <div class="project-card__technologies">
+                                        <span class="tech-pill">Python</span>
+                                        <span class="tech-pill">Pygame</span>
+                                    </div>
+                                    <div class="project-card__links">
+                                        <a href="https://github.com/SaurabhM-24/Snake-Game" target="_blank" class="project-card__link">
+                                            <i data-feather="github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                 <div class="project-card__image-wrapper">
+                                    <img src="Assets/portfolio_sc.png" alt="Personal Portfolio Website" class="project-card__image">
+                                </div>
+                                <div class="project-card__content">
+                                    <h3 class="project-card__title">Personal Portfolio Website</h3>
+                                    <p class="project-card__description">A modern and responsive portfolio website to showcase technical work, certifications, and academic background.</p>
+                                    <div class="project-card__technologies">
+                                        <span class="tech-pill">React.js</span>
+                                        <span class="tech-pill">TailwindCSS</span>
+                                    </div>
+                                    <div class="project-card__links">
+                                        <a href="http://porti.com" target="_blank" class="project-card__link">
+                                            <i data-feather="link"></i> Live Demo
+                                        </a>
+                                        <a href="http://git.port.com" target="_blank" class="project-card__link">
+                                            <i data-feather="github"></i> GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slider__button slider__button--left" aria-label="Previous project">
+                            <i data-feather="chevron-left"></i>
+                        </button>
+                        <button class="slider__button slider__button--right" aria-label="Next project">
+                            <i data-feather="chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
-                <a href="Assets/Saurabh_Mishra_Resume_ATS.pdf" target="_blank" class="btn resume-btn">
-                    Download ATS Resume
-                    <i data-feather="download"></i>
-                </a>
-                <a href="Assets/Saurabh_Mishra_Resume_Creative.pdf" target="_blank" class="btn resume-btn">
-                    Download Creative Resume
-                    <i data-feather="download"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-        <!-- Contact -->
-        <div class="content__section" id="contact">
-    <div class="content__wrapper">
-        <h1 class="content__title">Contact Me</h1>
+            </section>
 
-        <div class="contact-layout">
-            <div class="contact-layout__left">
-    <h3 class="contact-intro__title">Get In Touch</h3>
-    <p class="content__text" style="text-align: left;">
-        I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. The best way to reach me is through the form on this page.
-    </p>
-    <div class="contact-socials">
-        <a href="https://www.linkedin.com/in/saurabh-mishra-356023297/" target="_blank" class="contact-social-btn">
-            <span>LinkedIn</span>
-            <i data-feather="arrow-up-right"></i>
-        </a>
-        <a href="https://github.com/SaurabhM-24" target="_blank" class="contact-social-btn">
-            <span>GitHub</span>
-            <i data-feather="arrow-up-right"></i>
-        </a>
-    </div>
-</div>
-
-            <div class="contact-layout__right">
-                <form id="contact-form" action="https://formspree.io/f/mkgzpkqp" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="_replyto" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn resume-btn">
-                        Send Message <i data-feather="send"></i>
-                    </button>
-
-		    <div id="form-status"></div>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-        <!-- Education -->
-        <div class="content__section" id="education">
-            <div class="content__wrapper">
-                <h1 class="content__title">Education</h1>
-                <div class="education-slider">
-                    <div class="slider__track education__track">
-                        <!-- Card 1: B.Sc (Latest) -->
-                        <div class="education-card">
-                            <div class="education-card__logo">
-                                <img src="Assets/iitg_logo.png" alt="IIT Guwahati Logo" onerror="this.style.display='none'">
-                            </div>
-                            <div class="education-card__details">
-                                <h3 class="education-card__title">B.Sc. (Hons.), Data Science & Artificial Intelligence</h3>
-                                <p class="education-card__institution">Indian Institute of Technology, Guwahati</p>
-                                <p class="education-card__dates">Aug 2024 – May 2028</p>
-                                <p class="education-card__honours">CGPA: 9.32 (Current)</p>
-                            </div>
+            <!-- Resume Section -->
+            <section class="content__section" id="resume" aria-labelledby="resume-title" tabindex="-1">
+                <div class="content__wrapper">
+                    <h1 id="resume-title" class="content__title">Resume</h1>
+                    <div class="resume-layout">
+                        <div class="resume-preview">
+                            <img src="Assets/resume_ats_preview.jpeg" alt="ATS-Friendly Resume Preview">
+                            <p class="resume-label">ATS-Optimized Resume</p>
                         </div>
-                        <!-- Card 2: B.Tech -->
-                        <div class="education-card">
-                            <div class="education-card__logo">
-                                <img src="Assets/lpu_logo.png" alt="Lovely Professional University Logo" onerror="this.style.display='none'">
-                            </div>
-                            <div class="education-card__details">
-                                <h3 class="education-card__title">B.Tech, Computer Science & Engineering</h3>
-                                <p class="education-card__institution">Lovely Professional University</p>
-                                <p class="education-card__dates">Aug 2023 – May 2027</p>
-                                <p class="education-card__honours">CGPA: 8.86 (Current)</p>
-                            </div>
+                        <div class="resume-preview">
+                            <img src="Assets/resume_creative_preview.jpeg" alt="Creative Resume Preview">
+                            <p class="resume-label">Creative Resume</p>
                         </div>
-                        <!-- Card 3: 12th Grade -->
-                        <div class="education-card">
-                            <div class="education-card__logo">
-                                <img src="Assets/dps_logo.png" alt="School Logo" onerror="this.style.display='none'">
+                        <div class="resume-actions">
+                            <div class="call-to-action">
+                                <p>Choose the best format for your needs. The ATS version is for automated systems, while the Creative version is for human recruiters.</p>
                             </div>
-                            <div class="education-card__details">
-                                <h3 class="education-card__title">Higher Secondary (XII)</h3>
-                                <p class="education-card__institution">Delhi Public School</p>
-                                <p class="education-card__dates">Finished: Mar 2022</p>
-                                <p class="education-card__honours">Percentage: 86.4%</p>
-                            </div>
-                        </div>
-                        <!-- Card 4: 10th Grade (Oldest) -->
-                        <div class="education-card">
-                            <div class="education-card__logo">
-                                <img src="Assets/sbdav_logo.png" alt="School Logo" onerror="this.style.display='none'">
-                            </div>
-                            <div class="education-card__details">
-                                <h3 class="education-card__title">Senior Secondary (X)</h3>
-                                <p class="education-card__institution">Suraj Bhan D.A.V. Public School</p>
-                                <p class="education-card__dates">Finished: Mar 2020</p>
-                                <p class="education-card__honours">Percentage: 94.2%</p>
-                            </div>
+                            <a href="Assets/Saurabh_Mishra_Resume_ATS.pdf" target="_blank" class="btn resume-btn">
+                                Download ATS Resume
+                                <i data-feather="download"></i>
+                            </a>
+                            <a href="Assets/Saurabh_Mishra_Resume_Creative.pdf" target="_blank" class="btn resume-btn">
+                                Download Creative Resume
+                                <i data-feather="download"></i>
+                            </a>
                         </div>
                     </div>
-                    <!-- REFINED: Timeline bar structure for sliding effect -->
-                    <div class="education-timeline-bar-container">
-                        <!-- **THE FIX: Moved the bar inside the dots container** -->
-                        <div class="timeline-dots">
-                            <div class="education-timeline-bar"></div>
-                            <div class="timeline-entry">
-                                <span class="timeline-dot"></span>
-                                <span class="timeline-year">2028</span>
-                            </div>
-                            <div class="timeline-entry">
-                                <span class="timeline-dot"></span>
-                                <span class="timeline-year">2027</span>
-                            </div>
-                            <div class="timeline-entry">
-                                <span class="timeline-dot"></span>
-                                <span class="timeline-year">2022</span>
-                            </div>
-                            <div class="timeline-entry">
-                                <span class="timeline-dot"></span>
-                                <span class="timeline-year">2020</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="slider__button slider__button--left education-slider__button--left">
-                        <i data-feather="chevron-left"></i>
-                    </button>
-                    <button class="slider__button slider__button--right education-slider__button--right">
-                        <i data-feather="chevron-right"></i>
-                    </button>
                 </div>
-            </div>
-        </div>
-                <!-- Achievements -->
-        <div class="content__section" id="achievements">
-            <div class="content__wrapper">
-                <h1 class="content__title">Achievements & Certificates</h1>
+            </section>
 
-                <!-- Main Display Area for Certificates -->
-                <div class="achievement-viewer">
-                    <button class="achievement-viewer__nav achievement-viewer__nav--left"><i data-feather="chevron-left"></i></button>
-
-                    <!-- Certificate slides are now defined directly in HTML -->
-                    <div id="certificate-slides-container">
-                        <div class="certificate-slide active">
-                            <div class="achievement-viewer__image-container">
-                                 <img src="Assets/cert1.png" alt="Object Oriented Programming Certificate">
-                            </div>
-                            <div class="achievement-viewer__details">
-                                <h3>Object Oriented Programming</h3>
-                                <p>Completed a 72-hour online course on Object Oriented Programming from Lovely Professional University on the iamneo platform.</p>
+            <!-- Contact Section -->
+            <section class="content__section" id="contact" aria-labelledby="contact-title" tabindex="-1">
+                <div class="content__wrapper">
+                    <h1 id="contact-title" class="content__title">Contact Me</h1>
+                    <div class="contact-layout">
+                        <div class="contact-layout__left">
+                            <h3 class="contact-intro__title">Get In Touch</h3>
+                            <p class="content__text" style="text-align: left;">
+                                I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. The best way to reach me is through the form on this page.
+                            </p>
+                            <div class="contact-socials">
+                                <a href="https://www.linkedin.com/in/saurabh-mishra-356023297/" target="_blank" class="contact-social-btn">
+                                    <span>LinkedIn</span>
+                                    <i data-feather="arrow-up-right"></i>
+                                </a>
+                                <a href="https://github.com/SaurabhM-24" target="_blank" class="contact-social-btn">
+                                    <span>GitHub</span>
+                                    <i data-feather="arrow-up-right"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="certificate-slide">
-                            <div class="achievement-viewer__image-container">
-                                 <img src="Assets/cert2.png" alt="Java Programming Certificate">
-                            </div>
-                            <div class="achievement-viewer__details">
-                                <h3>Java Programming</h3>
-                                <p>Completed a 72-hour online course on Java Programming from Lovely Professional University on the iamneo platform.</p>
-                            </div>
-                        </div>
-                        <div class="certificate-slide">
-                            <div class="achievement-viewer__image-container">
-                                 <img src="Assets/cert3.png" alt="C Programming Certificate">
-                            </div>
-                            <div class="achievement-viewer__details">
-                                <h3>C Programming Language</h3>
-                                <p>Successfully completed training in C Programming Language from CipherSchools.</p>
-                            </div>
+                        <div class="contact-layout__right">
+                            <form id="contact-form" action="https://formspree.io/f/mkgzpkqp" method="POST">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="_replyto" placeholder="Your Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn resume-btn">
+                                    Send Message <i data-feather="send"></i>
+                                </button>
+                                <div id="form-status"></div>
+                            </form>
                         </div>
                     </div>
-
-                    <button class="achievement-viewer__nav achievement-viewer__nav--right"><i data-feather="chevron-right"></i></button>
                 </div>
+            </section>
 
-                <!-- Thumbnail Slider for Other Achievements/Links -->
-                <div class="achievement-links-slider">
-                    <button class="slider__button slider__button--left" id="achievements-links-prev"><i data-feather="chevron-left"></i></button>
-                    <div class="slider__track" id="achievement-links-track">
-                        <!-- Achievement links are now defined directly in HTML -->
-                        <a href="#" target="_blank" class="achievement-link-pill">
-                            <i data-feather="award"></i> CodeRush Hackathon
-                        </a>
-                        <a href="#" target="_blank" class="achievement-link-pill">
-                            <i data-feather="star"></i> ByteBash Hackathon
-                        </a>
-                        <a href="https://leetcode.com/u/user-not-found/" target="_blank" class="achievement-link-pill">
-                            <i data-feather="code"></i> LeetCode Profile
-                        </a>
-                        <a href="https://www.codechef.com/users/user-not-found" target="_blank" class="achievement-link-pill">
-                            <i data-feather="trophy"></i> CodeChef Profile
-                        </a>
+            <!-- Education Section -->
+            <section class="content__section" id="education" aria-labelledby="education-title" tabindex="-1">
+                <div class="content__wrapper">
+                    <h1 id="education-title" class="content__title">Education</h1>
+                    <div class="education-slider">
+                        <div class="slider__track education__track">
+                            <div class="education-card">
+                                <div class="education-card__logo">
+                                    <img src="Assets/iitg_logo.png" alt="IIT Guwahati Logo" onerror="this.style.display='none'">
+                                </div>
+                                <div class="education-card__details">
+                                    <h3 class="education-card__title">B.Sc. (Hons.), Data Science & Artificial Intelligence</h3>
+                                    <p class="education-card__institution">Indian Institute of Technology, Guwahati</p>
+                                    <p class="education-card__dates">Aug 2024 – May 2028</p>
+                                    <p class="education-card__honours">CGPA: 9.32 (Current)</p>
+                                </div>
+                            </div>
+                            <div class="education-card">
+                                <div class="education-card__logo">
+                                    <img src="Assets/lpu_logo.png" alt="Lovely Professional University Logo" onerror="this.style.display='none'">
+                                </div>
+                                <div class="education-card__details">
+                                    <h3 class="education-card__title">B.Tech, Computer Science & Engineering</h3>
+                                    <p class="education-card__institution">Lovely Professional University</p>
+                                    <p class="education-card__dates">Aug 2023 – May 2027</p>
+                                    <p class="education-card__honours">CGPA: 8.86 (Current)</p>
+                                </div>
+                            </div>
+                            <div class="education-card">
+                                <div class="education-card__logo">
+                                    <img src="Assets/dps_logo.png" alt="School Logo" onerror="this.style.display='none'">
+                                </div>
+                                <div class="education-card__details">
+                                    <h3 class="education-card__title">Higher Secondary (XII)</h3>
+                                    <p class="education-card__institution">Delhi Public School</p>
+                                    <p class="education-card__dates">Finished: Mar 2022</p>
+                                    <p class="education-card__honours">Percentage: 86.4%</p>
+                                </div>
+                            </div>
+                            <div class="education-card">
+                                <div class="education-card__logo">
+                                    <img src="Assets/sbdav_logo.png" alt="School Logo" onerror="this.style.display='none'">
+                                </div>
+                                <div class="education-card__details">
+                                    <h3 class="education-card__title">Senior Secondary (X)</h3>
+                                    <p class="education-card__institution">Suraj Bhan D.A.V. Public School</p>
+                                    <p class="education-card__dates">Finished: Mar 2020</p>
+                                    <p class="education-card__honours">Percentage: 94.2%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="education-timeline-bar-container">
+                            <div class="timeline-dots">
+                                <div class="education-timeline-bar"></div>
+                                <div class="timeline-entry">
+                                    <span class="timeline-dot"></span>
+                                    <span class="timeline-year">2028</span>
+                                </div>
+                                <div class="timeline-entry">
+                                    <span class="timeline-dot"></span>
+                                    <span class="timeline-year">2027</span>
+                                </div>
+                                <div class="timeline-entry">
+                                    <span class="timeline-dot"></span>
+                                    <span class="timeline-year">2022</span>
+                                </div>
+                                <div class="timeline-entry">
+                                    <span class="timeline-dot"></span>
+                                    <span class="timeline-year">2020</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slider__button slider__button--left education-slider__button--left" aria-label="Previous education entry">
+                            <i data-feather="chevron-left"></i>
+                        </button>
+                        <button class="slider__button slider__button--right education-slider__button--right" aria-label="Next education entry">
+                            <i data-feather="chevron-right"></i>
+                        </button>
                     </div>
-                    <button class="slider__button slider__button--right" id="achievements-links-next"><i data-feather="chevron-right"></i></button>
                 </div>
+            </section>
 
-            </div>
+            <!-- Achievements Section -->
+            <section class="content__section" id="achievements" aria-labelledby="achievements-title" tabindex="-1">
+                <div class="content__wrapper">
+                    <h1 id="achievements-title" class="content__title">Achievements & Certificates</h1>
+                    <div class="achievement-viewer">
+                        <button class="achievement-viewer__nav achievement-viewer__nav--left" aria-label="Previous certificate"><i data-feather="chevron-left"></i></button>
+                        <div id="certificate-slides-container">
+                            <div class="certificate-slide active">
+                                <div class="achievement-viewer__image-container">
+                                     <img src="Assets/cert1.png" alt="Object Oriented Programming Certificate">
+                                </div>
+                                <div class="achievement-viewer__details">
+                                    <h3>Object Oriented Programming</h3>
+                                    <p>Completed a 72-hour online course on Object Oriented Programming from Lovely Professional University on the iamneo platform.</p>
+                                </div>
+                            </div>
+                            <div class="certificate-slide">
+                                <div class="achievement-viewer__image-container">
+                                     <img src="Assets/cert2.png" alt="Java Programming Certificate">
+                                </div>
+                                <div class="achievement-viewer__details">
+                                    <h3>Java Programming</h3>
+                                    <p>Completed a 72-hour online course on Java Programming from Lovely Professional University on the iamneo platform.</p>
+                                </div>
+                            </div>
+                            <div class="certificate-slide">
+                                <div class="achievement-viewer__image-container">
+                                     <img src="Assets/cert3.png" alt="C Programming Certificate">
+                                </div>
+                                <div class="achievement-viewer__details">
+                                    <h3>C Programming Language</h3>
+                                    <p>Successfully completed training in C Programming Language from CipherSchools.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="achievement-viewer__nav achievement-viewer__nav--right" aria-label="Next certificate"><i data-feather="chevron-right"></i></button>
+                    </div>
+                    <div class="achievement-links-slider">
+                        <button class="slider__button slider__button--left" id="achievements-links-prev" aria-label="Previous achievement link"><i data-feather="chevron-left"></i></button>
+                        <div class="slider__track" id="achievement-links-track">
+                            <a href="#" target="_blank" class="achievement-link-pill">
+                                <i data-feather="award"></i> CodeRush Hackathon
+                            </a>
+                            <a href="#" target="_blank" class="achievement-link-pill">
+                                <i data-feather="star"></i> ByteBash Hackathon
+                            </a>
+                            <a href="https://leetcode.com/u/user-not-found/" target="_blank" class="achievement-link-pill">
+                                <i data-feather="code"></i> LeetCode Profile
+                            </a>
+                            <a href="https://www.codechef.com/users/user-not-found" target="_blank" class="achievement-link-pill">
+                                <i data-feather="trophy"></i> CodeChef Profile
+                            </a>
+                        </div>
+                        <button class="slider__button slider__button--right" id="achievements-links-next" aria-label="Next achievement link"><i data-feather="chevron-right"></i></button>
+                    </div>
+                </div>
+            </section>
+
         </div>
+    </main>
 
+    <!-- Image Modal (Lightbox) -->
+    <div id="image-modal" class="modal" role="dialog" aria-modal="true">
+        <span class="modal-close" aria-label="Close image viewer">&times;</span>
+        <img class="modal-content" id="modal-image" alt="Enlarged resume preview">
     </div>
 
-    <div id="image-modal" class="modal">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modal-image">
-    </div>
-
-    <!-- CLI -->
-    <div class="cli">
-        <div class="cli__trigger">&gt;</div>
-        <div class="cli__window">
+    <!-- Command Line Interface -->
+    <footer class="cli">
+        <button class="cli__trigger" aria-label="Open command line interface">&gt;</button>
+        <div class="cli__window" role="dialog" aria-modal="true">
             <div class="cli__output"></div>
             <div class="cli__input-container">
-                <span class="cli__prompt">&gt;</span>
-                <input type="text" class="cli__input" autofocus />
+                <label for="cli-input" class="cli__prompt">&gt;</label>
+                <input type="text" id="cli-input" class="cli__input" autofocus />
             </div>
         </div>
-    </div>
+    </footer>
 
-
-    <!-- Libraries -->
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <!-- THE FIX: Swapped tsParticles with the original particles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
-    <!-- Main script -->
+    <!-- Main Application Script -->
     <script src="main.js"></script>
 </body>
 </html>
