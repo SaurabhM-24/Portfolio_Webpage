@@ -11,6 +11,7 @@
  * 6. Command Line Interface (CLI) functionality
  * 7. Image modal/lightbox for resume previews
  * 8. Contact form submission handling
+ * 9. Automatic hero section reveal on page load
  * =================================================================
  */
 
@@ -516,8 +517,14 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(update);
     })();
 
+    // --- Initial Setup Calls ---
     updateTheme();
     initCLI();
     initImageModal();
     initContactForm();
+
+    // --- NEW: Auto-open hero section after a delay ---
+    setTimeout(() => {
+        openSection('about');
+    }, 750); // 0.75-second delay
 });
